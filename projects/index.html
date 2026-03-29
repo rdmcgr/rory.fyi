@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | rory.fyi</title>
+  <meta name="description" content="Projects and experiments" />
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --ink: #1c1c1c;
+      --muted: #6b645a;
+      --paper: #fffdf8;
+      --accent: #d47b4a;
+      --accent-2: #1f6f7a;
+      --grid: rgba(0, 0, 0, 0.08);
+      --shadow: 0 18px 45px rgba(30, 30, 30, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Alegreya", "Iowan Old Style", "Book Antiqua", "Palatino", serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #fef9f0 0%, var(--bg) 48%, #efe5d5 100%);
+    }
+
+    header {
+      padding: 0 6vw 32px;
+    }
+
+    .logo {
+      width: min(180px, 60vw);
+      margin: 0 0 16px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--paper);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.6rem, 2vw + 2.1rem, 3.6rem);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    main {
+      padding: 0 6vw 80px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--paper);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 26px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .tile {
+      background: rgba(31, 111, 122, 0.08);
+      border-radius: 18px;
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .tile h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--accent-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .year-badge {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .footnote-trigger {
+      margin-left: 6px;
+      border: none;
+      background: rgba(0, 0, 0, 0.06);
+      color: var(--accent-2);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.7rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footnote-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 1000;
+    }
+
+    .footnote-modal.active {
+      display: flex;
+    }
+
+    .footnote-content {
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: var(--ink);
+    }
+
+    .footnote-content p {
+      margin: 0 0 16px;
+    }
+
+    .footnote-close {
+      border: none;
+      background: rgba(31, 111, 122, 0.12);
+      color: var(--accent-2);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .tile p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 0;
+      background: #f1ece2;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .project-stack {
+      display: grid;
+      gap: 0;
+    }
+
+    .project-stack img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-image.contain img {
+      object-fit: contain;
+      background: #f1ece2;
+    }
+
+    footer {
+      padding: 0 6vw 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding-top: 0;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/rory-logo.png" alt="Rory logo" />
+    </div>
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/bookshelf/">Bookshelf</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/travel/">Travel</a>
+      <a href="/projects/">Projects</a>
+    </div>
+    <h1>Projects</h1>
+    <p class="subtitle">Selected work, experiments, and collaborations from the distant past.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="grid">
+        <article class="tile">
+          <h3>Gaming Website <span class="year-badge">1998</span></h3>
+          <p>
+            Hacked Yahoo! and other pre-Google search engines to get on page 1 of the search results. Received millions of page views and was hooked!
+            <button class="footnote-trigger" type="button" data-footnote="I was 12 years old as you can see from the image below.">¹</button>
+          </p>
+          <div class="project-image">
+            <img src="/images/gaming-website.png" alt="Gaming Website screenshot" />
+          </div>
+        </article>
+        <article class="tile">
+          <h3>Website Design Agency <span class="year-badge">2001</span></h3>
+          <p>Started designing simple website for my friends, including bands, side projects, and companies.</p>
+          <div class="project-image">
+            <img src="/images/sycodawg.jpg" alt="Website Design Agency project" />
+          </div>
+        </article>
+        <article class="tile">
+          <h3>The Missing Links <span class="year-badge">2002</span></h3>
+          <p>Created a website for the local sensation The Missing Links f/k/a Puke Knowledge.</p>
+          <div class="project-image">
+            <img src="/images/tml.jpg" alt="The Missing Links project" />
+          </div>
+        </article>
+        <article class="tile">
+          <h3>Get A Job! <span class="year-badge">2003</span></h3>
+          <p>Created a web 1.0 message board before social media existed, with users contributing tens of thousands of posts in just a couple of years time.</p>
+          <div class="project-image">
+            <img src="/images/gaj-board.jpg" alt="Get A Job! project" />
+          </div>
+        </article>
+        <article class="tile">
+          <h3>Obsessed With Sports <span class="year-badge">2008</span></h3>
+          <p>Founded a web 2.0 blog that garnered tens of millions of unique views (back when that was actually something). Even had way too many sports betting tie-ins a decade ahead of everyone else.</p>
+          <div class="project-stack">
+            <img src="/images/OWS-Original-Banner.png" alt="Obsessed With Sports banner" />
+            <img src="/images/ows-april-2010.png" alt="Obsessed With Sports screenshot" />
+          </div>
+        </article>
+        <article class="tile">
+          <h3>Misc. Websites <span class="year-badge">2009</span></h3>
+          <p>Built numerous website for clients and friends alike, includeing this example website with multimedia capability (when that was both novel and not easy).</p>
+          <div class="project-image">
+            <img src="/images/shawn.jpg" alt="Personal Websites project" />
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; <span id="year"></span> rory.fyi. Built with curiosity, coffee, patience, and a some
+      <a id="wine-link" href="#" target="_blank" rel="noopener">wine</a>.
+    </p>
+  </footer>
+
+  <div class="footnote-modal" id="footnote-modal" aria-hidden="true">
+    <div class="footnote-content" role="dialog" aria-modal="true" aria-labelledby="footnote-text">
+      <p id="footnote-text"></p>
+      <button class="footnote-close" type="button">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const wines = [
+      {
+        name: "Cakebread Dancing Bear Rach Cabernet",
+        url: "https://www.vivino.com/en/cakebread-dancing-bear-ranch/w/65064",
+      },
+      {
+        name: "Bledsoe Family Winery Stolen Horse Syrah",
+        url: "https://www.vivino.com/en/bledsoe-family-winery-stolen-horse/w/2727147",
+      },
+      {
+        name: "Doubleback Cabernet Savignon",
+        url: "https://www.vivino.com/en/doubleback-cabernet-sauvignon/w/1194118",
+      },
+      {
+        name: "Domaine Serene Evenstad Pinot",
+        url: "https://www.vivino.com/en/domaine-serene-evenstad-reserve-pinot-noir/w/1882725",
+      },
+      {
+        name: "Hundred Suns Old Eight Cut Pinot",
+        url: "https://www.vivino.com/en/hundred-suns-old-eight-cut-pinot-noir/w/5404341",
+      },
+    ];
+    const wineLink = document.getElementById("wine-link");
+    if (wineLink) {
+      const pick = wines[Math.floor(Math.random() * wines.length)];
+      wineLink.textContent = pick.name;
+      wineLink.href = pick.url;
+    }
+
+    const modal = document.getElementById("footnote-modal");
+    const modalText = document.getElementById("footnote-text");
+    const closeBtn = modal.querySelector(".footnote-close");
+
+    document.querySelectorAll(".footnote-trigger").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        modalText.textContent = btn.dataset.footnote || "";
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+  </script>
+</body>
+</html>

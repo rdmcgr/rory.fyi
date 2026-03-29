@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel | rory.fyi</title>
+  <meta name="description" content="Travel notes and maps" />
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --ink: #1c1c1c;
+      --muted: #6b645a;
+      --paper: #fffdf8;
+      --accent: #d47b4a;
+      --accent-2: #1f6f7a;
+      --grid: rgba(0, 0, 0, 0.08);
+      --shadow: 0 18px 45px rgba(30, 30, 30, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Alegreya", "Iowan Old Style", "Book Antiqua", "Palatino", serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #fef9f0 0%, var(--bg) 48%, #efe5d5 100%);
+    }
+
+    header {
+      padding: 0 6vw 32px;
+    }
+
+    .logo {
+      width: min(180px, 60vw);
+      margin: 0 0 16px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--paper);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.6rem, 2vw + 2.1rem, 3.6rem);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    main {
+      padding: 0 6vw 80px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--paper);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 26px;
+    }
+
+    .map-frame {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f1ece2;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 480px;
+      border: 0;
+      display: block;
+    }
+
+    .image-frame {
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-frame img {
+      max-width: min(880px, 100%);
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 30px rgba(30, 30, 30, 0.12);
+    }
+
+    footer {
+      padding: 0 6vw 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding-top: 0;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .map-frame iframe {
+        height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/rory-logo.png" alt="Rory logo" />
+    </div>
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/bookshelf/">Bookshelf</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/travel/">Travel</a>
+      <a href="/projects/">Projects</a>
+    </div>
+    <h1>Travel</h1>
+    <p class="subtitle">Since 2019, the focus has been on the Pacific Northwest and the broader West Coast.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=1Oyzdo98mdvefaxb2RG-TV2-4D8Xc-l8&amp;ehbc=2E312F"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Travel map"
+        ></iframe>
+      </div>
+      <div class="image-frame">
+        <img
+          src="/images/national-parks-and-points-of-interest.png"
+          alt="National parks and points of interest"
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; <span id="year"></span> rory.fyi. Built with curiosity, coffee, patience, and a some
+      <a id="wine-link" href="#" target="_blank" rel="noopener">wine</a>.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const wines = [
+      {
+        name: "Cakebread Dancing Bear Rach Cabernet",
+        url: "https://www.vivino.com/en/cakebread-dancing-bear-ranch/w/65064",
+      },
+      {
+        name: "Bledsoe Family Winery Stolen Horse Syrah",
+        url: "https://www.vivino.com/en/bledsoe-family-winery-stolen-horse/w/2727147",
+      },
+      {
+        name: "Doubleback Cabernet Savignon",
+        url: "https://www.vivino.com/en/doubleback-cabernet-sauvignon/w/1194118",
+      },
+      {
+        name: "Domaine Serene Evenstad Pinot",
+        url: "https://www.vivino.com/en/domaine-serene-evenstad-reserve-pinot-noir/w/1882725",
+      },
+      {
+        name: "Hundred Suns Old Eight Cut Pinot",
+        url: "https://www.vivino.com/en/hundred-suns-old-eight-cut-pinot-noir/w/5404341",
+      },
+    ];
+    const wineLink = document.getElementById("wine-link");
+    if (wineLink) {
+      const pick = wines[Math.floor(Math.random() * wines.length)];
+      wineLink.textContent = pick.name;
+      wineLink.href = pick.url;
+    }
+  </script>
+</body>
+</html>

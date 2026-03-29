@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bookshelf | rory.fyi</title>
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --ink: #1c1c1c;
+      --muted: #6b645a;
+      --paper: #fffdf8;
+      --accent: #d47b4a;
+      --accent-2: #1f6f7a;
+      --grid: rgba(0, 0, 0, 0.08);
+      --shadow: 0 18px 45px rgba(30, 30, 30, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Alegreya", "Iowan Old Style", "Book Antiqua", "Palatino", serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #fef9f0 0%, var(--bg) 48%, #efe5d5 100%);
+    }
+
+    header {
+      padding: 0 6vw 32px;
+    }
+
+    .logo {
+      width: min(180px, 60vw);
+      margin: 0 0 16px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--paper);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 2vw + 2rem, 3.4rem);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    main {
+      padding: 0 6vw 80px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(200px, 480px) auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    .search {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    input[type="search"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #d8cbbb;
+      background: var(--paper);
+      font-size: 1rem;
+      font-family: inherit;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .count {
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .table-shell {
+      background: var(--paper);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: linear-gradient(90deg, rgba(184, 92, 56, 0.18), rgba(31, 111, 122, 0.16));
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--grid);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #3b2f2a;
+    }
+
+    tbody tr {
+      transition: background 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background: rgba(184, 92, 56, 0.08);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(31, 111, 122, 0.12);
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .empty {
+      padding: 32px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .pager {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .pager-btn {
+      border: 1px solid #d8cbbb;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .pager-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .pager-btn:not(:disabled):hover {
+      transform: translateY(-2px);
+    }
+
+    .pager-status {
+      color: var(--muted);
+      font-size: 0.95rem;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 0 6vw 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .count {
+        text-align: left;
+      }
+
+      th, td {
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      table, thead, tbody, tr, th, td {
+        display: block;
+        width: 100%;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        border-bottom: 1px solid var(--grid);
+        padding: 10px 0;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 10px;
+        padding: 8px 12px;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/rory-logo.png" alt="Rory logo" />
+    </div>
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/bookshelf/">Bookshelf</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/travel/">Travel</a>
+      <a href="/projects/">Projects</a>
+    </div>
+    <h1>Bookshelf</h1>
+    <p class="subtitle">A living list of the books on my shelves.</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <div class="search">
+        <label for="search">Search by title, author, or category</label>
+        <input id="search" type="search" placeholder="Type to filter..." autocomplete="off" />
+      </div>
+      <div class="count" id="count">Loading...</div>
+    </div>
+
+    <div class="table-shell">
+      <table id="books">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Sub Category</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty" id="empty" hidden>No matching books found.</div>
+    </div>
+
+    <div class="pager" id="pager" hidden>
+      <button class="pager-btn" id="prev" type="button" aria-label="Previous page">←</button>
+      <span class="pager-status" id="pager-status"></span>
+      <button class="pager-btn" id="next" type="button" aria-label="Next page">→</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; <span id="year"></span> rory.fyi. Built with curiosity, coffee, patience, and a some
+      <a id="wine-link" href="#" target="_blank" rel="noopener">wine</a>.
+    </p>
+  </footer>
+
+  <script>
+    const DATA_URL = "/data/books.csv";
+    const columns = ["Title", "Author", "Category", "Sub Category"];
+
+    const tbody = document.querySelector("#books tbody");
+    const search = document.querySelector("#search");
+    const count = document.querySelector("#count");
+    const empty = document.querySelector("#empty");
+
+    let rows = [];
+    let filteredRows = [];
+    let page = 1;
+    const pageSize = 50;
+
+    function normalize(value) {
+      return String(value ?? "").toLowerCase();
+    }
+
+    function renderPage(list) {
+      const total = list.length;
+      const totalPages = Math.max(1, Math.ceil(total / pageSize));
+      page = Math.min(page, totalPages);
+
+      const start = (page - 1) * pageSize;
+      const end = start + pageSize;
+      const pageRows = list.slice(start, end);
+
+      if (pageRows.length === 0) {
+        tbody.innerHTML = "";
+        empty.hidden = false;
+      } else {
+        empty.hidden = true;
+        tbody.innerHTML = pageRows.map((row) => {
+          const category = row["Category"] ? `<span class="pill">${row["Category"]}</span>` : "";
+          const subCategory = row["Sub Category"] ? `<span class="pill">${row["Sub Category"]}</span>` : "";
+          return `
+            <tr>
+              <td data-label="Title">${row["Title"] ?? ""}</td>
+              <td data-label="Author">${row["Author"] ?? ""}</td>
+              <td data-label="Category">${category}</td>
+              <td data-label="Sub Category">${subCategory}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      const shown = pageRows.length;
+      const totalAll = rows.length;
+      const currentRange = total === 0 ? "0-0" : `${start + 1}-${Math.min(end, total)}`;
+      count.textContent = `${currentRange} of ${total} (total ${totalAll})`;
+
+      const pager = document.querySelector("#pager");
+      const prev = document.querySelector("#prev");
+      const next = document.querySelector("#next");
+      const status = document.querySelector("#pager-status");
+      pager.hidden = total <= pageSize;
+      prev.disabled = page <= 1;
+      next.disabled = page >= totalPages;
+      status.textContent = `Page ${page} of ${totalPages}`;
+    }
+
+    function applyFilter() {
+      const q = normalize(search.value);
+      if (!q) {
+        filteredRows = rows;
+        page = 1;
+        renderPage(filteredRows);
+        return;
+      }
+
+      filteredRows = rows.filter((row) =>
+        columns.some((col) => normalize(row[col]).includes(q))
+      );
+      page = 1;
+      renderPage(filteredRows);
+    }
+
+    function parseCSV(csvText) {
+      const rows = [];
+      let current = "";
+      let inQuotes = false;
+      let row = [];
+
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const next = csvText[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            current += '"';
+            i += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+          continue;
+        }
+
+        if (char === "," && !inQuotes) {
+          row.push(current);
+          current = "";
+          continue;
+        }
+
+        if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && next === "\n") {
+            i += 1;
+          }
+          row.push(current);
+          if (row.some((cell) => cell.trim() !== '')) {
+            rows.push(row);
+          }
+          row = [];
+          current = "";
+          continue;
+        }
+
+        current += char;
+      }
+
+      if (current.length || row.length) {
+        row.push(current);
+        if (row.some((cell) => cell.trim() !== '')) {
+          rows.push(row);
+        }
+      }
+
+      return rows;
+    }
+
+    fetch(DATA_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load data");
+        return res.text();
+      })
+      .then((csvText) => {
+        const [header, ...body] = parseCSV(csvText);
+        if (!header) throw new Error("No data");
+        rows = body.map((cols) => {
+          const row = {};
+          header.forEach((key, i) => {
+            row[key] = (cols[i] ?? '').trim();
+          });
+          return row;
+        });
+        filteredRows = rows;
+        renderPage(filteredRows);
+      })
+      .catch(() => {
+        count.textContent = "Failed to load books.";
+      });
+
+    search.addEventListener("input", applyFilter);
+
+    document.querySelector("#prev").addEventListener("click", () => {
+      page = Math.max(1, page - 1);
+      renderPage(filteredRows);
+    });
+
+    document.querySelector("#next").addEventListener("click", () => {
+      page = Math.min(Math.ceil(filteredRows.length / pageSize), page + 1);
+      renderPage(filteredRows);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const wines = [
+      {
+        name: "Cakebread Dancing Bear Rach Cabernet",
+        url: "https://www.vivino.com/en/cakebread-dancing-bear-ranch/w/65064",
+      },
+      {
+        name: "Bledsoe Family Winery Stolen Horse Syrah",
+        url: "https://www.vivino.com/en/bledsoe-family-winery-stolen-horse/w/2727147",
+      },
+      {
+        name: "Doubleback Cabernet Savignon",
+        url: "https://www.vivino.com/en/doubleback-cabernet-sauvignon/w/1194118",
+      },
+      {
+        name: "Domaine Serene Evenstad Pinot",
+        url: "https://www.vivino.com/en/domaine-serene-evenstad-reserve-pinot-noir/w/1882725",
+      },
+      {
+        name: "Hundred Suns Old Eight Cut Pinot",
+        url: "https://www.vivino.com/en/hundred-suns-old-eight-cut-pinot-noir/w/5404341",
+      },
+    ];
+    const wineLink = document.getElementById("wine-link");
+    if (wineLink) {
+      const pick = wines[Math.floor(Math.random() * wines.length)];
+      wineLink.textContent = pick.name;
+      wineLink.href = pick.url;
+    }
+  </script>
+</body>
+</html>

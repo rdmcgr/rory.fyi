@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio | rory.fyi</title>
+  <meta name="description" content="Portfolio highlights" />
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --ink: #1c1c1c;
+      --muted: #6b645a;
+      --paper: #fffdf8;
+      --accent: #d47b4a;
+      --accent-2: #1f6f7a;
+      --grid: rgba(0, 0, 0, 0.08);
+      --shadow: 0 18px 45px rgba(30, 30, 30, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Alegreya", "Iowan Old Style", "Book Antiqua", "Palatino", serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #fef9f0 0%, var(--bg) 48%, #efe5d5 100%);
+    }
+
+    header {
+      padding: 0 6vw 32px;
+    }
+
+    .logo {
+      width: min(180px, 60vw);
+      margin: 0 0 16px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--paper);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.6rem, 2vw + 2.1rem, 3.6rem);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 0.95rem;
+    }
+
+    .counter strong {
+      font-size: 1.1rem;
+    }
+
+    .counter.secondary strong {
+      font-size: 0.95rem;
+    }
+
+    .counter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .counter.secondary {
+      background: rgba(31, 111, 122, 0.12);
+      color: var(--accent-2);
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+
+    .filter-row {
+      margin-top: 18px;
+      display: grid;
+      gap: 8px;
+      max-width: 260px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .filter-row select {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #d8cbbb;
+      background: var(--paper);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 0 6vw 80px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--paper);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 26px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .tile {
+      background: rgba(31, 111, 122, 0.08);
+      border-radius: 18px;
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .logo-frame {
+      width: 100%;
+      height: 120px;
+      border-radius: 14px;
+      background: #f1ece2;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-image {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+
+    .tile h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--accent-2);
+    }
+
+    .tile p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 0 6vw 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding-top: 0;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/rory-logo.png" alt="Rory logo" />
+    </div>
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/bookshelf/">Bookshelf</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/travel/">Travel</a>
+      <a href="/projects/">Projects</a>
+    </div>
+    <h1>Portfolio</h1>
+    <p class="subtitle">Highlights of investments and long-term bets.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Investments</h2>
+      <p>A list of investments that more than doubled within 36 months.</p>
+      <div class="counter-group">
+        <div class="counter">
+          <span># of 100%+ return investments</span>
+          <strong id="total-count">0</strong>
+        </div>
+        <div class="counter secondary">
+          <span>Software</span>
+          <strong id="software-count">0</strong>
+        </div>
+        <div class="counter secondary">
+          <span>Hardware</span>
+          <strong id="hardware-count">0</strong>
+        </div>
+        <div class="counter secondary">
+          <span>Other</span>
+          <strong id="other-count">0</strong>
+        </div>
+      </div>
+      <div class="filter-row">
+        <label for="year-filter">Filter by first invested year</label>
+        <select id="year-filter">
+          <option value="all">All years</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="card">
+                  <div class="grid">
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/electronic_arts.png" alt="Electronic Arts logo" class="logo-image" />
+          </div>
+          <h3>Electronic Arts, Inc.</h3>
+          <p>First invested: 2012</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/apple.png" alt="Apple logo" class="logo-image" />
+          </div>
+          <h3>Apple, Inc.</h3>
+          <p>First invested: 2013</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/wayfair.png" alt="Wayfair logo" class="logo-image" />
+          </div>
+          <h3>Wayfair, Inc.</h3>
+          <p>First invested: 2014</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/bitcoin.png" alt="Bitcoin logo" class="logo-image" />
+          </div>
+          <h3>Bitcoin</h3>
+          <p>First invested: 2015</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/facebook.png" alt="Facebook logo" class="logo-image" />
+          </div>
+          <h3>Facebook, Inc.</h3>
+          <p>First invested: 2015</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/litecoin.png" alt="Litecoin logo" class="logo-image" />
+          </div>
+          <h3>Litecoin</h3>
+          <p>First invested: 2016</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/yen.png" alt="Yen logo" class="logo-image" />
+          </div>
+          <h3>Yen (short)</h3>
+          <p>First invested: 2016</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/ethereum.png" alt="Ethereum logo" class="logo-image" />
+          </div>
+          <h3>Ethereum</h3>
+          <p>First invested: 2016</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/oil.png" alt="Oil logo" class="logo-image" />
+          </div>
+          <h3>Oil</h3>
+          <p>First invested: 2017</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/albertsons.png" alt="Albertsons logo" class="logo-image" />
+          </div>
+          <h3>Albertsons Companies, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/alphabet.png" alt="Alphabet logo" class="logo-image" />
+          </div>
+          <h3>Alphabet, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/amazon.png" alt="Amazon logo" class="logo-image" />
+          </div>
+          <h3>Amazon.com, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/berkshire_hathaway.png" alt="Berkshire Hathaway logo" class="logo-image" />
+          </div>
+          <h3>Berkshire Hathaway, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/cloudflare.png" alt="Cloudflare logo" class="logo-image" />
+          </div>
+          <h3>Cloudflare, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/coinbase.png" alt="Coinbase logo" class="logo-image" />
+          </div>
+          <h3>Coinbase Global, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/crowdstrike.png" alt="Crowdstrike logo" class="logo-image" />
+          </div>
+          <h3>Crowdstrike Holdings, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/flir_systems.png" alt="Flir Systems logo" class="logo-image" />
+          </div>
+          <h3>Flir Systems, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/goldman_sachs.png" alt="Goldman Sachs logo" class="logo-image" />
+          </div>
+          <h3>Goldman Sachs Group, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/home_depot.png" alt="Home Depot logo" class="logo-image" />
+          </div>
+          <h3>Home Depot, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/jpmorgan.png" alt="JPMorgan logo" class="logo-image" />
+          </div>
+          <h3>JPMorgan Chase &amp; Co</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/microsoft.png" alt="Microsoft logo" class="logo-image" />
+          </div>
+          <h3>Microsoft Corp.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/mongodb.png" alt="MongoDB logo" class="logo-image" />
+          </div>
+          <h3>MongoDB, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/netflix.png" alt="Netflix logo" class="logo-image" />
+          </div>
+          <h3>Netflix, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/shopify.png" alt="Shopify logo" class="logo-image" />
+          </div>
+          <h3>Shopify, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/spotify.png" alt="Spotify logo" class="logo-image" />
+          </div>
+          <h3>Spotify Technologies SA</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/workday.png" alt="Workday logo" class="logo-image" />
+          </div>
+          <h3>Workday, Inc.</h3>
+          <p>First invested: 2020</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/amd.png" alt="AMD logo" class="logo-image" />
+          </div>
+          <h3>Advanced Micro Devices, Inc.</h3>
+          <p>First invested: 2021</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/general_dynamics.png" alt="General Dynamics logo" class="logo-image" />
+          </div>
+          <h3>General Dynamics Corp.</h3>
+          <p>First invested: 2021</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/marvell.png" alt="Marvell logo" class="logo-image" />
+          </div>
+          <h3>Marvell Technology, Inc.</h3>
+          <p>First invested: 2021</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/nvidia.png" alt="Nvidia logo" class="logo-image" />
+          </div>
+          <h3>Nvidia Corp.</h3>
+          <p>First invested: 2021</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/nxp.png" alt="NXP Semiconductors logo" class="logo-image" />
+          </div>
+          <h3>NXP Semiconductors NV</h3>
+          <p>First invested: 2021</p>
+        </article>
+        <article class="tile" data-category="other">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/solana.png" alt="Solana logo" class="logo-image" />
+          </div>
+          <h3>Solana</h3>
+          <p>First invested: 2021</p>
+        </article>
+        <article class="tile" data-category="software">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/draftkings.png" alt="DraftKings logo" class="logo-image" />
+          </div>
+          <h3>DraftKings, Inc.</h3>
+          <p>First invested: 2022</p>
+        </article>
+        <article class="tile" data-category="hardware">
+          <div class="logo-frame">
+            <img src="/portfolio/logos/tsmc.png" alt="TSMC logo" class="logo-image" />
+          </div>
+          <h3>Taiwan Semiconductor Manufacturing Co.</h3>
+          <p>First invested: 2022</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; <span id="year"></span> rory.fyi. Built with curiosity, coffee, patience, and a some
+      <a id="wine-link" href="#" target="_blank" rel="noopener">wine</a>.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const names = Array.from(document.querySelectorAll(".tile h3"))
+      .map((el) => el.textContent.trim())
+      .filter((name) => name && name !== "Company Name");
+    document.getElementById("total-count").textContent = names.length;
+
+    const softwareCount = document.querySelectorAll('.tile[data-category="software"] h3').length;
+    const hardwareCount = document.querySelectorAll('.tile[data-category="hardware"] h3').length;
+    const otherCount = document.querySelectorAll('.tile[data-category="other"] h3').length;
+    document.getElementById("software-count").textContent = softwareCount;
+    document.getElementById("hardware-count").textContent = hardwareCount;
+    document.getElementById("other-count").textContent = otherCount;
+
+    const yearSelect = document.getElementById("year-filter");
+    const tiles = Array.from(document.querySelectorAll(".tile"));
+    const years = Array.from(new Set(tiles.map((tile) => {
+      const text = tile.querySelector("p")?.textContent || "";
+      const match = text.match(/(19|20)\d{2}/);
+      return match ? match[0] : null;
+    }).filter(Boolean))).sort();
+
+    years.forEach((year) => {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
+    });
+
+    function applyYearFilter() {
+      const value = yearSelect.value;
+      tiles.forEach((tile) => {
+        const text = tile.querySelector("p")?.textContent || "";
+        const match = text.match(/(19|20)\d{2}/);
+        const year = match ? match[0] : null;
+        const visible = value === "all" || year === value;
+        tile.style.display = visible ? "" : "none";
+      });
+    }
+
+    yearSelect.addEventListener("change", applyYearFilter);
+
+    const wines = [
+      {
+        name: "Cakebread Dancing Bear Rach Cabernet",
+        url: "https://www.vivino.com/en/cakebread-dancing-bear-ranch/w/65064",
+      },
+      {
+        name: "Bledsoe Family Winery Stolen Horse Syrah",
+        url: "https://www.vivino.com/en/bledsoe-family-winery-stolen-horse/w/2727147",
+      },
+      {
+        name: "Doubleback Cabernet Savignon",
+        url: "https://www.vivino.com/en/doubleback-cabernet-sauvignon/w/1194118",
+      },
+      {
+        name: "Domaine Serene Evenstad Pinot",
+        url: "https://www.vivino.com/en/domaine-serene-evenstad-reserve-pinot-noir/w/1882725",
+      },
+      {
+        name: "Hundred Suns Old Eight Cut Pinot",
+        url: "https://www.vivino.com/en/hundred-suns-old-eight-cut-pinot-noir/w/5404341",
+      },
+    ];
+    const wineLink = document.getElementById("wine-link");
+    if (wineLink) {
+      const pick = wines[Math.floor(Math.random() * wines.length)];
+      wineLink.textContent = pick.name;
+      wineLink.href = pick.url;
+    }
+  </script>
+</body>
+</html>
