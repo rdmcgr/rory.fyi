@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | Personal Website</title>
+  <meta name="description" content="Personal website for Your Name">
+  <style>
+    body {
+      margin: 0;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      color: #000000;
+      background-color: #0047ab;
+      background-image:
+        linear-gradient(45deg, #00398a 25%, transparent 25%),
+        linear-gradient(-45deg, #00398a 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #00398a 75%),
+        linear-gradient(-45deg, transparent 75%, #00398a 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 14px 8px 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-top: 3px solid #ffffff;
+      border-left: 3px solid #ffffff;
+      border-right: 3px solid #666666;
+      border-bottom: 3px solid #666666;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .main-frame {
+      background: #c0c0c0;
+      border-top: 4px solid #ffffff;
+      border-left: 4px solid #ffffff;
+      border-right: 4px solid #555555;
+      border-bottom: 4px solid #555555;
+      padding: 10px;
+    }
+
+    .top-bar {
+      background: linear-gradient(to right, #000080, #1084d0);
+      color: #ffffff;
+      border: 2px outset #c0c0c0;
+      padding: 6px 10px;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .blink {
+      animation: blink 1s steps(2, start) infinite;
+      color: #cc0000;
+      font-weight: bold;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+
+    h1, h2 {
+      margin-top: 0;
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 8px;
+      color: #000080;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #800000;
+      border-bottom: 2px dotted #999999;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+    }
+
+    .tagline {
+      color: #333333;
+      margin-top: 0;
+      font-style: italic;
+    }
+
+    .project-list {
+      list-style: square;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .project-item {
+      background: #f9f9f9;
+      border: 1px solid #999999;
+      margin-bottom: 8px;
+      padding: 8px;
+    }
+
+    .project-item h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+      color: #000080;
+    }
+
+    .project-item p {
+      margin: 0;
+      color: #222222;
+    }
+
+    a {
+      color: #0000ee;
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #551a8b;
+    }
+
+    footer {
+      color: #111111;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .counter {
+      display: inline-block;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 18px;
+      letter-spacing: 2px;
+      background: #000000;
+      color: #00ff00;
+      border: 2px inset #c0c0c0;
+      padding: 3px 8px;
+      margin-top: 5px;
+    }
+
+    .nav {
+      background: #efefef;
+      border: 2px inset #c0c0c0;
+      padding: 6px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .nav a {
+      margin: 0 8px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 8px 4px 16px;
+      }
+
+      .card {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .nav a {
+        display: inline-block;
+        margin: 4px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!--
+      HOW TO EDIT THIS PAGE (Beginner Friendly)
+      1) Replace text between tags (example: <h1>Your Name</h1>)
+      2) Keep the tags themselves (<h1>, <p>, etc.)
+      3) Save this file and refresh your browser
+      4) If something breaks, undo your last edit
+    -->
+    <div class="main-frame">
+      <div class="top-bar">Personal Homepage - Microsoft Internet Explorer</div>
+      <div class="nav">
+        <a href="/">Home</a>
+        <a href="/bookshelf/">Bookshelf</a>
+      </div>
+
+      <marquee behavior="alternate" scrollamount="5">
+        Welcome to my website! Last updated: February 1999
+      </marquee>
+
+      <section class="card">
+        <!-- ===== HERO SECTION ===== -->
+        <h1>Your Name</h1>
+        <p class="tagline">Short title or tagline (example: Writer, Designer, and Curious Human)</p>
+        <p>
+          Welcome to my personal website. This is a short introduction you can edit in plain text.
+          Keep it to 2-4 sentences to make it easy to read.
+        </p>
+        <p class="blink">UNDER CONSTRUCTION</p>
+      </section>
+
+      <section class="card" id="about">
+        <!-- ===== ABOUT SECTION ===== -->
+        <h2>About Me</h2>
+        <p>
+          Write a simple paragraph about yourself here. Include your interests, your work,
+          and the kind of opportunities or connections you are open to.
+        </p>
+        <p>
+          Tip: You can add another paragraph by copying this whole &lt;p&gt;...&lt;/p&gt; line.
+        </p>
+      </section>
+
+      <section class="card" id="projects">
+        <!-- ===== PROJECTS SECTION ===== -->
+        <h2>Projects</h2>
+        <ul class="project-list">
+          <li class="project-item">
+            <h3>Project One</h3>
+            <p>One sentence explaining what this project is and why it matters.</p>
+          </li>
+          <li class="project-item">
+            <h3>Project Two</h3>
+            <p>One sentence explaining what this project is and why it matters.</p>
+          </li>
+          <li class="project-item">
+            <h3>Project Three</h3>
+            <p>One sentence explaining what this project is and why it matters.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="contact">
+        <!-- ===== CONTACT SECTION ===== -->
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile">linkedin.com/in/your-profile</a></p>
+        <p>GitHub: <a href="https://github.com/your-username">github.com/your-username</a></p>
+      </section>
+
+      <footer>
+        <p>&copy; <span id="year"></span> Your Name</p>
+        <p>This page is best viewed at 800x600 resolution.</p>
+        <div class="counter">001337</div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // Automatically updates the year in the footer.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

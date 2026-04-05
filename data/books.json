@@ -1,0 +1,1568 @@
+[
+  {
+    "Title": "1776",
+    "Author": "David McCullough",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "1984",
+    "Author": "George Orwell",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Brief History Of Time",
+    "Author": "Stephen Hawking",
+    "Category": "Science",
+    "Sub Category": "Physics"
+  },
+  {
+    "Title": "A City So Grand: The Rise of an American Metropolis, Boston 1850-1900",
+    "Author": "Stephen Puleo",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Man for All Markets: From Las Vegas to Wall Street, How I Beat the Dealer and the Market",
+    "Author": "Edward O. Thorp",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Man Without a Country",
+    "Author": "Kurt Vonnegut",
+    "Category": "Misc. Non-fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Random Walk Down Wall Street",
+    "Author": "Burton G. Malkiel",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Short History of Nearly Everything",
+    "Author": "Bill Bryson",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Short History of The World",
+    "Author": "H.G. Wells",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "A Supposedly Fun Thing I'll Never Do Again",
+    "Author": "David Foster Wallace",
+    "Category": "Misc. Non-fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Abundance",
+    "Author": "Ezra Klein, Derek Thompson",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Alice in Wonderland",
+    "Author": "Lewis Carroll",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "All The Pieces Matter: The Inside Story of The Wire",
+    "Author": "Jonathan Abrams",
+    "Category": "Entertainment",
+    "Sub Category": "Oral History"
+  },
+  {
+    "Title": "All The Rave: The Rise and Fall of Shawn Fanning's Napster",
+    "Author": "Joseph Menn",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "All The Shah's Men: An American Coup And The Roots Of Middle East Terror",
+    "Author": "Stephen Kinzer",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "America's Bank: The Epic Struggle to Create the Federal Reserve",
+    "Author": "Roger Lowenstein",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "America's Bitter Pill: The Fight to Fix our Broken Healthcare System",
+    "Author": "Steven Brill",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Animal Farm",
+    "Author": "George Orwell",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Antifragile: Things that Gain from Disorder",
+    "Author": "Nassim Nicholas Taleb",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Apple in China: The Capture of the World's Greatest Company",
+    "Author": "Patrick McGee",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Ask Gary Vee",
+    "Author": "Gary Vaynerchuk",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Astrophysics for People in a Hurry",
+    "Author": "Neil Degrasse Tyson",
+    "Category": "Science",
+    "Sub Category": "Physics"
+  },
+  {
+    "Title": "At The Edge Of Camelot: Debating Economics In Turbulent Times",
+    "Author": "Donald W. Katzner",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Atlas Shrugged",
+    "Author": "Ayn Rand",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Bad Blood: Secrets and Lies in a Silicon Valley Startup",
+    "Author": "John Carreyrou",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Barbarians At The Gate: The Fall Of RJR Nabisco",
+    "Author": "Bryan Burrough, John Helyar",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Basketball (And Other Things)",
+    "Author": "Shea Serrano",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Beginning of Infinity",
+    "Author": "David Deutsch",
+    "Category": "Science",
+    "Sub Category": "Physics"
+  },
+  {
+    "Title": "Big Business: A Love Letter to an American Anti-Hero",
+    "Author": "Tyler Cowen",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Bionomics",
+    "Author": "Michael Rothschild",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Black Flags: The Rise of ISIS",
+    "Author": "Joby Warrick",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Blood  In The Cage: Mixed Martial Arts, Pat Miletich, and the Furious Rise of the UFC",
+    "Author": "L. Jon Wertheim",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Blood And Oil: The Dangers And Consequences Of America's Growing Dependency On Importing Petroleum",
+    "Author": "Michael T. Klare",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Boom: Bubbles and the End of Stagnation",
+    "Author": "Byrne Hobart, Tobias Huber",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Boomerang",
+    "Author": "Michael Lewis",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Brave New World",
+    "Author": "Aldous Huxley",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Breakneck: China's Quest to Engineer the Future",
+    "Author": "Dan Wang",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Bringing Down The House: The Inside Story Of Six M.I.T. Students Who Took Vegas For Millions",
+    "Author": "Ben Mezrich",
+    "Category": "Entertainment",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Built To Last",
+    "Author": "Jim Collins",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Capital Volume I",
+    "Author": "Karl Marx",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Charlie Munger: The Complete Investor",
+    "Author": "Tren Griffin",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Chip War: The Fight for the World's Most Critical Technology",
+    "Author": "Chris Miller",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Chipping: The New Stock Market Method For Surviving Turbulence And Hitting A Hole-In-One",
+    "Author": "Harlan D. Platt",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Collapse: How Societies Choose to Fail or Succeed: Revised Edition",
+    "Author": "Jared Diamond",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Confessions Of An Economics Hit Man",
+    "Author": "John Perkins",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Consider the Lobster and Other Essays",
+    "Author": "David Foster Wallace",
+    "Category": "Misc. Non-fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Contours of Descent: U.S. Economic Fractures and the Landscape of Global Austerity",
+    "Author": "Robert Polin",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Death of a Salesman",
+    "Author": "Arthur Miller",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Death to the BCS: The Definitive Case Against The Bowl Championship Series",
+    "Author": "Dan Wetzel, Josh Peter, Jeff Passan",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Decoded",
+    "Author": "Jay-Z",
+    "Category": "Entertainment",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Deep Tech",
+    "Author": "Eric Redmond",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Delivering Happiness: A Path to Profits, Passion and Purpose",
+    "Author": "Tony Hsieh",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Democracy in America",
+    "Author": "Alexis De Tocqueville",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Destined For War: Can America and China Escape Thucydides's Trap?",
+    "Author": "Graham Allison",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Devil Take the Hindmost: A History of Financial Speculation",
+    "Author": "Edward Chancellor",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Diamond Dollars: The Economics of Winning in Baseball",
+    "Author": "Vince Gennard",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Die With Zero: Getting All You Can from Your Money and Your Life",
+    "Author": "Bill Perkins",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Do Androids Dream of Electric Sheep?",
+    "Author": "Philip K. Dick",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Dreamstate: A Conspiracy Theory",
+    "Author": "Jed McKenna",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "E.A.R.L.: The Autobiography of DMX",
+    "Author": "Smokey Fontaine",
+    "Category": "Entertainment",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Empire of Pain: The Secret History of the Sackler Dynasty",
+    "Author": "Patrick Radden Keefe",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Every Day Is Sunday: How Jerry Jones, Robert Kraft, and Roger Goodell Turned the NFL into a Cultural & Economic Juggernaut",
+    "Author": "Ken Belson",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Exhalation: Stories",
+    "Author": "Ted Chiang",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Extraordinary Popular Delusions And The Madness Of Crowds",
+    "Author": "Charles MacKay",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Fair Pay: How To Get a Raise, Close the Wage Gap, and Build Stronger Businesses",
+    "Author": "David Buckmaster",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Fear And Loathing On The Campaign Trail '72",
+    "Author": "Hunter S. Thompson",
+    "Category": "History & Politics",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Flash Boys: A Wall Street Revolt",
+    "Author": "Michael Lewis",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets",
+    "Author": "Nassim Nicholas Taleb",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Foundation",
+    "Author": "Isaac Asimov",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Freakonomics: A Rogue Economist Explores The Hidden Side Of Everything",
+    "Author": "Steven D. Levitt, Stephen J. Dubner",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Gambler: Secrets from a Life at Risk",
+    "Author": "Billy Walters",
+    "Category": "Sports",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Gambling Man: The Secret Story of the World's Greatest Disruptor, Masayoshi Son",
+    "Author": "Lionel Barber",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Genentech: The Beginnings of Biotech",
+    "Author": "Sally Smith Hughes",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Going Bigtime: The Spectacular Rise of Umass Basketball",
+    "Author": "Marty Dobrow",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Good To Great",
+    "Author": "Jim Collins",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Got Fight? The 50 Zen Principles Of Hand-To-Face Combat",
+    "Author": "Forrest Griffin",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Grantland: Talk Nerdy To Me",
+    "Author": "n/a",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Grantland: Volume 1",
+    "Author": "n/a",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Gridiron Genius",
+    "Author": "Michael Lombardi",
+    "Category": "Sports",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Griftopia: Bubble Machines, Vampire Squids, and the Long Con That is Breaking America",
+    "Author": "Matt Taibbi",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Guns, Germs, And Steel",
+    "Author": "Jared Diamond",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Hillbilly Elegy: A Memoir of a Family and Culture in Crisis",
+    "Author": "J.D. Vance",
+    "Category": "History & Politics",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Hooked: How TO Build Habit-Forming Products",
+    "Author": "Nir Eyal",
+    "Category": "Science",
+    "Sub Category": "Psychology"
+  },
+  {
+    "Title": "House of Huawei: The Secret History of China's Most Powerful Company",
+    "Author": "Eva Dou",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "House Of Lies: How Management Consultants Steal Your Watch And Then Tell You The Time",
+    "Author": "Martin Kihn",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "How Adam Smith Can Change Your Life?",
+    "Author": "Russ Roberts",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "How the World Works",
+    "Author": "Noam Chomsky, David Barsamian",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "How to Change Your Mind",
+    "Author": "Michael Pollan",
+    "Category": "Science",
+    "Sub Category": "Chemistry"
+  },
+  {
+    "Title": "How To Stop Worrying and Start Living",
+    "Author": "Dale Carnegie",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "If Anyone Builds It, Everyone Dies: Why Superhuman AI Would Kill Us All",
+    "Author": "Eliezer Yudkowsky, Nate Soares",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Immoderate Greatness: Why Civilizations Fail",
+    "Author": "William Ophuls",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Inbound Marketing",
+    "Author": "Brian Halligan, Dharmesh Shah",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Industrial Society and Its Future",
+    "Author": "Theodore Kaczynski",
+    "Category": "Memoir",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Infinite Jest",
+    "Author": "David Foster Wallace",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Insanely Simple: The Obsession That Drives Apple's Success",
+    "Author": "Ken Segall",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "It's Better To Be Feared: The New England Patriots Dynasty and the Pursuit of Greatness",
+    "Author": "Seth Wickersham",
+    "Category": "Sports",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Jesse Livermore - Boy Plunger",
+    "Author": "Tom Rubython",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "John Stuart Mill Autobiography",
+    "Author": "John Stuart Mill",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Just Do It: The Nike Spirit in the Corporate World",
+    "Author": "Donald Katz",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Kicking the Hornets Nest",
+    "Author": "Satoshi Nakamoto",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Learn Agile",
+    "Author": "Andrew Stellman, Jennifer Greene",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Lee Kuan Yew: The Grand Master's Insights on China, the United States, and the World",
+    "Author": "Graham Allison",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Leonardo Da Vinci",
+    "Author": "Walter Isaacson",
+    "Category": "History & Politics",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Let My People Go Surfing: The Education of a Reluctant Businessman",
+    "Author": "Yvon Chouinard",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Letters from a Stoic",
+    "Author": "Lucius Annaeus Seneca",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": "Philosophy"
+  },
+  {
+    "Title": "Liftoff: Elon Musk and the Desperate Early Days That Launched SpaceX",
+    "Author": "Eric Berger",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Listen, Liberal or What Ever Happened to the Party of The People?",
+    "Author": "Thomas Frank",
+    "Category": "History & Politics",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Living On The Black: Two Pitchers, Two Teams, One Season To Remember",
+    "Author": "John Feinstein",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Lost City of the Monkey God",
+    "Author": "Douglas Preston",
+    "Category": "Entertainment",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Make Something Wonderful",
+    "Author": "Steve Jobs",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Man Without a Country",
+    "Author": "Kurt Vonnegut",
+    "Category": "Misc. Non-fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Man's Search for Meaning",
+    "Author": "Viktor E. Frankl",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Margin of Safety",
+    "Author": "Seth Klarman",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "May The Best Team Win: Baseball Economics and Public Policy",
+    "Author": "Andrew Zimbalist",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Mayor for A New America",
+    "Author": "Thomas Menino",
+    "Category": "History & Politics",
+    "Sub Category": "Politics"
+  },
+  {
+    "Title": "Meditations",
+    "Author": "Marcus Aurelius",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": "Philosophy"
+  },
+  {
+    "Title": "Mindfulness in Plain English",
+    "Author": "Bhante Gunaratana",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Moneyball",
+    "Author": "Michael Lewis",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Moneymaker: How And Amateur Poker Player Turned $40 Into $2.5M",
+    "Author": "Chris Moneymaker",
+    "Category": "Entertainment",
+    "Sub Category": ""
+  },
+  {
+    "Title": "My Life",
+    "Author": "Bill Clinton",
+    "Category": "History & Politics",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Nine Stories",
+    "Author": "J.D. Salinger",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "No Man Knows My History: The Life of Joseph Smith",
+    "Author": "Fawn M. Brodie",
+    "Category": "History & Politics",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Not Accountable: Rethinking the Constitutionality of Public Employee Unions",
+    "Author": "Philip K. Howard",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Nuclear War: A Scenario",
+    "Author": "Nuclear War: A Scenario",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Objective Knowledge: An Evolutionary Approach",
+    "Author": "Karl Popper",
+    "Category": "Science",
+    "Sub Category": "Philosophy"
+  },
+  {
+    "Title": "On Liberty",
+    "Author": "John Stuart Mill",
+    "Category": "Economics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "On the Edge: The Art of Risking Everything",
+    "Author": "Nate Silver",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "One Up On Wall Street",
+    "Author": "Peter Lynch",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Only the Paranoid Survive: How to Exploit the Crisis Points That Challenge Every Company",
+    "Author": "Andrew S. Grove",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Out of Mao's Shadow",
+    "Author": "Philip P. Pan",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Outliers",
+    "Author": "Malcolm Gladwell",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Outlive: The Science and Art of Longevity",
+    "Author": "Peter Attia",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Pay for Results: Aligning Executive Compensation with Business Performance",
+    "Author": "n/a",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Pay Without Performance: The Unfulfilled Promise of Executive Compensation",
+    "Author": "Lucian Bebchuk, Jesse Fried",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Pay: Why People Earn What They Earn And What You Can Do Now To Make More",
+    "Author": "Kevin F. Hallock",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Playing For Keeps",
+    "Author": "David Halberstam",
+    "Category": "Sports",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Poor CharlieÕs Almanack: The Essential Wit and Wisdom of Charles T. Munger",
+    "Author": "Charles T. Munger",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Powerful: Building a Culture of Freedom and Responsibility",
+    "Author": "Patty McCord",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Powerhouse: The Untold Story of Hollywood's Creative Artists Agency",
+    "Author": "James Andrew Miller",
+    "Category": "Entertainment",
+    "Sub Category": "Oral History"
+  },
+  {
+    "Title": "Predictably Irrational: The Hidden Forces That Share Our Decisions",
+    "Author": "Dan Ariely",
+    "Category": "Science",
+    "Sub Category": "Psychology"
+  },
+  {
+    "Title": "Pride and Prejudice",
+    "Author": "Jane Austin",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Principles",
+    "Author": "Ray Dalio",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Principles for Dealing with the Changing World Order",
+    "Author": "Ray Dalio",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Principles for Navigating Big Debt  Crises",
+    "Author": "Ray Dalio",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Principles of Corporate Renewal",
+    "Author": "Harlan D. Platt",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Product Leadership",
+    "Author": "Richard Banfield",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Pursing The Competitive Edge",
+    "Author": "Robert Hayes, Gary Pisano, David Upton, Steven Wheelwright",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Read Write Own",
+    "Author": "Chris Dixon",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Reality Is Not What It Seems: The Journey to Quantum Gravity",
+    "Author": "Carlo Rovelli",
+    "Category": "Science",
+    "Sub Category": "Physics"
+  },
+  {
+    "Title": "Reminiscences of a Stock Operator",
+    "Author": "Edwin Lefevre",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Return to the Little Kingdom",
+    "Author": "Michael Moritz",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Same as Ever: A Guide to What Never Changes",
+    "Author": "Morgan Housel",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "San Fransicko: Why Progressives Ruin Cities",
+    "Author": "Michael Shellenberger",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Sapiens",
+    "Author": "Yuval Noah Harari",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Scorecasting: The Hidden Influences Behind How Sports Are Played And Games Are Won",
+    "Author": "Tobias J. Moskowitz, L. Jon Wetheim",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Seth Klarman: Margin of Safety, Master of Value",
+    "Author": "Katrine Koss",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Shoe Dog",
+    "Author": "Phil Knight",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Ski, Inc. 2020",
+    "Author": "Chris Diamond",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Skin in the Game: Hidden Asymmetries in Daily Life",
+    "Author": "Nassim Nicholas Taleb",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Snow Crash",
+    "Author": "Neal Stephenson",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Softwar: A Novel Theory on Power Projection and the National Strategic Significance of Bitcoin",
+    "Author": "Jason Paul Lowery",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Start Something That Matters",
+    "Author": "Blake Mycoskie",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Steve Jobs",
+    "Author": "Walter Isaacson",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Strength Training Anatomy",
+    "Author": "Frederic Delavier",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Stubborn Attachments",
+    "Author": "Tyler Cowen",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Sum: Forty Tales from the Afterlives",
+    "Author": "David Eagleman",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Superintelligence: Paths, Dangers, Strategies",
+    "Author": "Nick Bostrom",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Surely You're Joking, Mr. Feynman",
+    "Author": "Richard Feynman",
+    "Category": "Science",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The 4-Hour Body",
+    "Author": "Timothy Ferriss",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The 5 Types of Wealth: A Transformative Guide to Design Your Dream Life",
+    "Author": "Sahil Bloom",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The AirBNB Story",
+    "Author": "Leigh Gallagher",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "The Alchemy of Finance",
+    "Author": "George Soros",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Baseball Uncyclopedia",
+    "Author": "Michael Kun, Howard Bloom",
+    "Category": "Sports",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Bed of Procrustes: Philosophical and Practical Aphorisms",
+    "Author": "Nassim Nicholas Taleb",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": "Philosophy"
+  },
+  {
+    "Title": "The Bible - Book of Exodus",
+    "Author": "Unknown",
+    "Category": "Religion",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Bible - Book of Genesis",
+    "Author": "Unknown",
+    "Category": "Religion",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Big Miss: My Years Coaching Tiger Woods",
+    "Author": "Hank Haney",
+    "Category": "Sports",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Big Picture: On the origins of life, meaning, and the universe itself",
+    "Author": "Sean Carroll",
+    "Category": "Science",
+    "Sub Category": "Physics"
+  },
+  {
+    "Title": "The Bitcoin Standard",
+    "Author": "Saifedean Ammous",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "The Boiling Moat: Urgent Steps to Defend Taiwan",
+    "Author": "Matt Pottinger",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Catcher In The Rye",
+    "Author": "J.D. Salinger",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The CEO Pay Machine",
+    "Author": "Steven Clifford",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting Up a Generation for Failure",
+    "Author": "Greg Lukianoff, Jonathan Haidt",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Collapse of Complex Societies",
+    "Author": "Joseph Tainter",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Complete Stories of Isaac Asimov",
+    "Author": "Isaac Asimov",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Courage to Be Disliked",
+    "Author": "Ichiro Kishimi",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Death of Public School",
+    "Author": "Cara Fitzpatrick",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Deficit Myth",
+    "Author": "Stephanie Kelton",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Doors of Perception",
+    "Author": "Aldous Huxley",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Dorito Effect: The Surprising New Truth About Food and Flavor",
+    "Author": "Mark Schatzker",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The End of History and the Last Man",
+    "Author": "Francis Fukuyama",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Federalist Papers",
+    "Author": "Charles R. Kesler",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Fourth Turning: An American Prophecy - What the Cycles of History Tell Us About America's Next Rendezvous with Destiny",
+    "Author": "William Strauss, Neil Howe",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Google Story",
+    "Author": "David A. Vise",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "The Great Depression: A Diary",
+    "Author": "Benjamin Roth",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Great Stagnation",
+    "Author": "Tyler Cowen",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "The Greatest Trade Ever: The Behind-The-Scenes Story Of How John Paulson Defied Wall Street",
+    "Author": "Gregory Zuckerman",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "The Hard Thing About Hard Things",
+    "Author": "Ben Horowitz",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Hundred-Year Marathon: China's Secret Strategy to Replace America as the Global Superpower",
+    "Author": "Michael Pillsbury",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Innovator's Dilemma",
+    "Author": "Clayton M. Christensen",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Intelligent Investor",
+    "Author": "Benjamin Graham",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Joy Of Less",
+    "Author": "Francine Jay",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Last Season",
+    "Author": "Phil Jackson",
+    "Category": "Sports",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Mamba Mentality",
+    "Author": "Kobe Bryant",
+    "Category": "Sports",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Managerial Revolution: What is Happening in the World",
+    "Author": "James Burnham",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Network State: How To Start a New Country",
+    "Author": "Balaji Srinivasan",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Number: How the Drive for Quarterly Earning Corrupted Wall Street and Corporate America",
+    "Author": "Alex Berenson",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Nvidia Way: Jensen Huang and the Making of a Tech Giant",
+    "Author": "Tae Kim",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "The Phoenix Effect",
+    "Author": "Carter Pate, Harlan Platt",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Price of Time: The Real Story of Interest",
+    "Author": "Edward Chancellor",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "The Prince",
+    "Author": "Niccol˜ Machiavelli",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Prize: The Epic Quest for Oil, Money & Power",
+    "Author": "Daniel Yergin",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Psychology of Money",
+    "Author": "Morgan Housel",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Rap Yearbook",
+    "Author": "Shea Serrano",
+    "Category": "Entertainment",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Rational Optimist: How Prosperity Evolves",
+    "Author": "Matt Ridley",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Ride of A Lifetime",
+    "Author": "Robert Iger",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Road to Serfdom",
+    "Author": "Friedrich Hayek",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "The Roving Mind",
+    "Author": "Isaac Asimov",
+    "Category": "Misc. Non-fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Scaling Era: An Oral History of AI, 2019 - 2025",
+    "Author": "Dwarkesh Patel, Gavin Leech",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Search: How Google And Its Rivals Rewrote The Rules Of Business And Transformed Our Culture",
+    "Author": "John Battelle",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "The Secret",
+    "Author": "Rhonda Byrne",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Signal And The Noise: Why So Many Prediction Fail But Some Don't",
+    "Author": "Nate Silver",
+    "Category": "Science",
+    "Sub Category": "Math & Statistics"
+  },
+  {
+    "Title": "The Sovereign Individual",
+    "Author": "James Dale Davidson, William Rees-Mogg",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Space Barons",
+    "Author": "Christian Davenport",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "The Technological Republic: Hard Power, Soft Belief, and the Future of the West",
+    "Author": "Alexander C. Karp, Nicholas W. Zamiska",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Tell-Tale Heart and Other Stories",
+    "Author": "Edgar Allan Poe",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Thank You Economy",
+    "Author": "Gary Vaynerchuk",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Three-Body Problem",
+    "Author": "Cixin Liu, Ken Liu",
+    "Category": "Fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Tipping Point",
+    "Author": "Malcolm Gladwell",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Unaccountability Machine: Why Big Systems Make Terrible Decisions - and How The World Lost its Mind",
+    "Author": "Dan Davies",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "The Winner Within: A Life Plan for Team Players",
+    "Author": "Pat Riley",
+    "Category": "Sports",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The Witches: Salem, 1692",
+    "Author": "Stacy Schiff",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "The Wolf of Wall Street",
+    "Author": "Jordan Belfort",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "The World Is Flat: A Brief History of the Twenty-first Century",
+    "Author": "Thomas L. Friedman",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Thinking in Bets",
+    "Author": "Annie Duke",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Thinking Slow and Fast",
+    "Author": "Daniel Kahneman",
+    "Category": "Science",
+    "Sub Category": "Psychology"
+  },
+  {
+    "Title": "This Is Your Mind on Plants",
+    "Author": "Michael Pollan",
+    "Category": "Science",
+    "Sub Category": ""
+  },
+  {
+    "Title": "This Phenomenal Life",
+    "Author": "Misha Maynerick Blaise",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Those Guys Have All The Fun: Inside The World of ESPN",
+    "Author": "James Andrew Miller, Tom Shales",
+    "Category": "Entertainment",
+    "Sub Category": "Oral History"
+  },
+  {
+    "Title": "Tired of Winning: Donald Trump and the End of the Grand Old Party",
+    "Author": "Jonathan Karl",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "To Sell Is Human: The Surprising Truth About Moving Others",
+    "Author": "Daniel H. Punk",
+    "Category": "Science",
+    "Sub Category": "Psychology"
+  },
+  {
+    "Title": "Uncontrolled Spread: Why COVID-19 Crushed Us and How We Can Defeat the Next Pandemic",
+    "Author": "Scott Gottlieb",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Understanding Executive Compensation: A Practical Guide for Decision Makers",
+    "Author": "Irving S. Becker, William M. Gereck",
+    "Category": "Personal Exploration & Skills",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Unequal Health: How Inequality Contributes To Health Or Illness",
+    "Author": "Grace Budrys",
+    "Category": "Business",
+    "Sub Category": "Economics"
+  },
+  {
+    "Title": "Unit X: How the Pentagon and Silicon Valley Are Transforming the Future of War",
+    "Author": "Raj M. Shah, Christopher Kirchhoff",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Unmasked",
+    "Author": "Andy Ngo",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Unshakeable: Your Financial Freedom Playbook",
+    "Author": "Tony Robbins",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Upper Left Cities: A Cultural Atlas of San Francisco, Portland, and Seattle",
+    "Author": "Hunter Shobe , David Banis",
+    "Category": "Misc. Non-fiction",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Venture Deals: Be Smarter than your Lawyer and Venture Capitalist",
+    "Author": "Brad Feld, Jason Mendelson",
+    "Category": "Business",
+    "Sub Category": ""
+  },
+  {
+    "Title": "War Room: Legacy of Bill Belichick and the Art of Building the Perfect Team",
+    "Author": "Michael Holley",
+    "Category": "Sports",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "What the Anti-Federalists Were For",
+    "Author": "Herbert J. Storing",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "What Works on Wall Street",
+    "Author": "James P. O'Shaughnessy",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "What's Our Problem?: A Self-Help Book for Societies",
+    "Author": "Tim Urban",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Where Are the Customers' Yachts? Or A Good Hard Look at Wall Street",
+    "Author": "Fred Schwed",
+    "Category": "Personal Finance & Investing",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Where'd You Get Those?",
+    "Author": "Bobbito Garcia",
+    "Category": "Entertainment",
+    "Sub Category": ""
+  },
+  {
+    "Title": "While America Aged",
+    "Author": "Roger Lowenstein",
+    "Category": "History & Politics",
+    "Sub Category": ""
+  },
+  {
+    "Title": "Who Knew",
+    "Author": "Barry Diller",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Who Knew",
+    "Author": "Barry Diller",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Wild Ride: Inside Uber's Quest for World Domination",
+    "Author": "Adam Lashinsky",
+    "Category": "Business",
+    "Sub Category": "Profile"
+  },
+  {
+    "Title": "Work Rules! Insights from Inside Google",
+    "Author": "Laszlo Buck",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  },
+  {
+    "Title": "Zero to One: Notes on Startups, or How to Build the Future",
+    "Author": "Peter Thiel",
+    "Category": "Business",
+    "Sub Category": "Memoir"
+  }
+]

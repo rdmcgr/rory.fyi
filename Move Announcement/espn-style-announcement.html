@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Move Announcement | ESPN Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #090c12;
+        --panel: #111722;
+        --panel-soft: #182131;
+        --ink: #f3f7fd;
+        --ink-soft: #aebbcf;
+        --line: #273447;
+        --accent: #d81e25;
+        --accent-2: #ef3c43;
+        --ok: #35d58a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 8% -4%, rgba(216, 30, 37, 0.18), transparent 36%),
+          radial-gradient(circle at 92% -12%, rgba(74, 136, 255, 0.18), transparent 34%),
+          linear-gradient(165deg, #06080d, #0b1119 48%, #0a121d);
+        min-height: 100vh;
+      }
+
+      .topline {
+        border-bottom: 1px solid rgba(120, 144, 171, 0.2);
+        background: rgba(9, 13, 19, 0.8);
+        backdrop-filter: blur(8px);
+      }
+
+      .topline-inner {
+        width: min(1080px, 100% - 24px);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        color: var(--ink);
+      }
+
+      .brand .dot {
+        color: var(--accent);
+      }
+
+      .status-pill {
+        margin-left: auto;
+        font-family: "Barlow Condensed", sans-serif;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+
+      .wrap {
+        width: min(1080px, 100% - 24px);
+        margin: 24px auto 34px;
+        display: grid;
+        grid-template-columns: 1.7fr 1fr;
+        gap: 16px;
+      }
+
+      .hero,
+      .panel,
+      .card,
+      .address-section {
+        background: linear-gradient(180deg, rgba(17, 23, 34, 0.95), rgba(12, 17, 26, 0.95));
+        border: 1px solid rgba(120, 144, 171, 0.25);
+        border-radius: 16px;
+        box-shadow: 0 18px 44px rgba(2, 5, 10, 0.38);
+      }
+
+      .hero {
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        right: -70px;
+        top: -90px;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(216, 30, 37, 0.28), transparent 65%);
+      }
+
+      .kicker {
+        margin: 0;
+        font-family: "Barlow Condensed", sans-serif;
+        letter-spacing: 0.1em;
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+      }
+
+      h1 {
+        margin: 10px 0 8px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(2.1rem, 5.5vw, 4rem);
+        line-height: 0.95;
+        text-transform: uppercase;
+      }
+
+      .lede {
+        margin: 0;
+        color: var(--ink-soft);
+        max-width: 58ch;
+        line-height: 1.65;
+      }
+
+      .scorestrip {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .score {
+        background: var(--panel-soft);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .score .label {
+        font-family: "Barlow Condensed", sans-serif;
+        letter-spacing: 0.08em;
+        font-size: 0.73rem;
+        color: var(--ink-soft);
+      }
+
+      .score .value {
+        margin-top: 4px;
+        font-size: 1.04rem;
+        font-weight: 700;
+      }
+
+      .side {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .panel {
+        padding: 14px;
+      }
+
+      .panel h2,
+      .card h2 {
+        margin: 0;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.02em;
+      }
+
+      .panel p,
+      .card p {
+        margin: 8px 0 0;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+
+      .address-card {
+        margin-top: 12px;
+        border: 1px solid rgba(216, 30, 37, 0.45);
+        border-radius: 12px;
+        padding: 14px;
+        background: linear-gradient(160deg, rgba(216, 30, 37, 0.18), rgba(16, 23, 33, 0.45));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .address-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.16) 42%, transparent 54%);
+        transform: translateX(-120%);
+        transition: transform 550ms ease;
+      }
+
+      .address-card.revealed::before {
+        transform: translateX(120%);
+      }
+
+      .button {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+        color: #fff;
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .address {
+        margin: 10px 0 0;
+        font-weight: 700;
+        opacity: 0;
+        transform: translateY(8px);
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 240ms ease, transform 260ms ease, max-height 260ms ease;
+      }
+
+      .address.show {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 80px;
+      }
+
+      .card,
+      .address-section {
+        grid-column: 1 / -1;
+        padding: 18px;
+      }
+
+      .tabs {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tab {
+        border: 1px solid var(--line);
+        background: #101620;
+        color: var(--ink-soft);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .tab[aria-selected="true"] {
+        color: #fff;
+        border-color: rgba(216, 30, 37, 0.8);
+        background: rgba(216, 30, 37, 0.2);
+      }
+
+      .tabpanel {
+        margin-top: 12px;
+      }
+
+      .tabpanel[hidden] {
+        display: none;
+      }
+
+      .route-svg {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #131a25, #0d1219);
+      }
+
+      .memories {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--ink-soft);
+        line-height: 1.8;
+      }
+
+      .travel-map iframe {
+        width: 100%;
+        height: 460px;
+        border: 0;
+        border-radius: 10px;
+      }
+
+      .address-section .address-card {
+        max-width: 560px;
+      }
+
+      .confetti {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 30;
+      }
+
+      .signoff {
+        margin-top: 14px;
+        font-weight: 700;
+        color: var(--ok);
+      }
+
+      @media (max-width: 920px) {
+        .wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topline-inner,
+        .wrap {
+          width: min(1080px, 100% - 16px);
+        }
+
+        .status-pill {
+          display: none;
+        }
+
+        .travel-map iframe {
+          height: 340px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topline">
+      <div class="topline-inner">
+        <div class="brand">ERIN &amp; RORY<span class="dot">.COM</span></div>
+        <div class="status-pill">LIVE UPDATE</div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <p class="kicker">BREAKING FAMILY NEWS</p>
+        <h1>We Are Moving Back To New England</h1>
+        <p class="lede">
+          After six meaningful years in Portland, Oregon, we are heading east. We moved here for Rory's role at Nike,
+          and before that we called Boston home. We are excited for this next chapter near family and old friends.
+        </p>
+
+        <div class="scorestrip" aria-label="Move summary">
+          <div class="score">
+            <div class="label">CURRENT CITY</div>
+            <div class="value">Portland, OR</div>
+          </div>
+          <div class="score">
+            <div class="label">MOVE DATE</div>
+            <div class="value">October 2026</div>
+          </div>
+          <div class="score">
+            <div class="label">NEXT REGION</div>
+            <div class="value">New England</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section class="panel" aria-label="Signoff">
+          <h2>From Us</h2>
+          <p>Thanks for being part of our Portland chapter and our next New England chapter.</p>
+          <p class="signoff">With love, Erin and Rory</p>
+        </section>
+      </aside>
+
+      <section class="card" aria-label="Our journey">
+        <h2>Our Journey</h2>
+        <p>Switch between route, memories, and your Western U.S. travel map.</p>
+
+        <div class="tabs" role="tablist" aria-label="Journey tabs">
+          <button class="tab" id="tab-route" role="tab" aria-controls="panel-route" aria-selected="true">Route</button>
+          <button class="tab" id="tab-memories" role="tab" aria-controls="panel-memories" aria-selected="false">Memories</button>
+          <button class="tab" id="tab-travels" role="tab" aria-controls="panel-travels" aria-selected="false">Western Travels</button>
+        </div>
+
+        <div class="tabpanel" id="panel-route" role="tabpanel" aria-labelledby="tab-route">
+          <svg class="route-svg" viewBox="0 0 720 300" aria-label="Stylized route map">
+            <rect x="0" y="0" width="720" height="300" fill="transparent" />
+            <path
+              d="M90 205 C 205 78, 356 74, 465 148 S 610 198, 650 128"
+              fill="none"
+              stroke="#d81e25"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-dasharray="9 9"
+            />
+            <circle cx="90" cy="205" r="10" fill="#f3f6fb" />
+            <circle cx="650" cy="128" r="10" fill="#35d58a" />
+            <text x="56" y="230" fill="#f3f6fb" font-size="15">Portland</text>
+            <text x="566" y="106" fill="#f3f6fb" font-size="15">New England</text>
+            <text x="286" y="120" fill="#b4bfcc" font-size="13">6 years in Oregon</text>
+          </svg>
+        </div>
+
+        <div class="tabpanel" id="panel-memories" role="tabpanel" aria-labelledby="tab-memories" hidden>
+          <ol class="memories">
+            <li>Boston: the first chapter together.</li>
+            <li>Portland: Nike years, friendships, and unforgettable places.</li>
+            <li>New England: the next home base.</li>
+          </ol>
+        </div>
+
+        <div class="tabpanel travel-map" id="panel-travels" role="tabpanel" aria-labelledby="tab-travels" hidden>
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1Oyzdo98mdvefaxb2RG-TV2-4D8Xc-l8&amp;ehbc=2E312F"
+            title="Western United States travel map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="address-section" aria-label="Address reveal">
+        <h2>New Address Reveal</h2>
+        <p>Tap below for the location card.</p>
+        <div class="address-card" id="address-card">
+          <button class="button" id="reveal-address" type="button" aria-expanded="false">Reveal Address</button>
+          <p class="address" id="address">[New Address Placeholder, City, State ZIP]</p>
+        </div>
+      </section>
+    </main>
+
+    <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+    <script>
+      const tabButtons = Array.from(document.querySelectorAll('.tab'));
+      const tabPanels = tabButtons
+        .map((button) => document.getElementById(button.getAttribute('aria-controls')))
+        .filter(Boolean);
+
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach((item) => item.setAttribute('aria-selected', item === button ? 'true' : 'false'));
+          const selectedPanel = button.getAttribute('aria-controls');
+          tabPanels.forEach((panel) => {
+            panel.hidden = panel.id !== selectedPanel;
+          });
+        });
+      });
+
+      const revealButton = document.getElementById('reveal-address');
+      const address = document.getElementById('address');
+      const addressCard = document.getElementById('address-card');
+
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      const pieces = [];
+      let raf = null;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function launchConfetti(originX, originY) {
+        const palette = ['#d81e25', '#fa3a41', '#f3f6fb', '#35d58a', '#f7be38'];
+        const total = 130;
+
+        for (let i = 0; i < total; i += 1) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 1.5 + Math.random() * 5.5;
+          pieces.push({
+            x: originX,
+            y: originY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2,
+            size: 4 + Math.random() * 6,
+            rotation: Math.random() * Math.PI,
+            vr: (Math.random() - 0.5) * 0.25,
+            life: 75 + Math.random() * 30,
+            color: palette[Math.floor(Math.random() * palette.length)],
+          });
+        }
+
+        if (!raf) {
+          animateConfetti();
+        }
+      }
+
+      function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = pieces.length - 1; i >= 0; i -= 1) {
+          const p = pieces[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.08;
+          p.rotation += p.vr;
+          p.life -= 1;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.globalAlpha = Math.max(p.life / 100, 0);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.64);
+          ctx.restore();
+
+          if (p.life <= 0 || p.y > canvas.height + 36) {
+            pieces.splice(i, 1);
+          }
+        }
+
+        if (pieces.length > 0) {
+          raf = window.requestAnimationFrame(animateConfetti);
+        } else {
+          raf = null;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      revealButton.addEventListener('click', () => {
+        const shown = address.classList.contains('show');
+
+        if (shown) {
+          address.classList.remove('show');
+          addressCard.classList.remove('revealed');
+          revealButton.setAttribute('aria-expanded', 'false');
+          revealButton.textContent = 'Reveal Address';
+          return;
+        }
+
+        address.classList.add('show');
+        addressCard.classList.add('revealed');
+        revealButton.setAttribute('aria-expanded', 'true');
+        revealButton.textContent = 'Hide Address';
+        const rect = revealButton.getBoundingClientRect();
+        launchConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      });
+    </script>
+  </body>
+</html>

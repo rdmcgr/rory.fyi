@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Erin + Rory Move Update (1998 Edition)</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Times New Roman", Times, serif;
+        background: #003366;
+        color: #000000;
+        overflow-x: hidden;
+      }
+
+      .retro-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #000033;
+        color: #33ff33;
+        display: grid;
+        place-items: center;
+        padding: 16px;
+      }
+
+      .retro-loader[hidden] {
+        display: none;
+      }
+
+      .retro-loader-box {
+        width: min(560px, 100%);
+        border: 3px ridge #999999;
+        background: #000000;
+        padding: 14px;
+        font-family: "Courier New", monospace;
+      }
+
+      .retro-loader-title {
+        margin: 0 0 8px;
+        color: #ffff66;
+        font-size: 20px;
+      }
+
+      .retro-loader-status {
+        margin: 0;
+        font-size: 14px;
+        min-height: 20px;
+      }
+
+      .retro-progress {
+        margin-top: 10px;
+        height: 18px;
+        border: 2px inset #777777;
+        background: #111111;
+      }
+
+      .retro-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #00aa00, #00ff66);
+      }
+
+      .retro-loader-note {
+        margin: 8px 0 0;
+        color: #66ccff;
+        font-size: 12px;
+      }
+
+      a {
+        color: #0000cc;
+      }
+
+      .page {
+        width: 980px;
+        max-width: calc(100% - 16px);
+        margin: 10px auto 20px;
+        background: #ffffcc;
+        border: 4px ridge #cccccc;
+      }
+
+      .top {
+        background: linear-gradient(90deg, #ffcc00, #33ccff);
+        border-bottom: 3px double #000000;
+        padding: 10px;
+      }
+
+      .title {
+        margin: 0;
+        text-align: center;
+        font-size: 38px;
+        letter-spacing: 1px;
+      }
+
+      .sub {
+        margin: 4px 0 0;
+        text-align: center;
+        font-size: 18px;
+      }
+
+      marquee {
+        font-weight: bold;
+        color: #990000;
+        background: #ffffff;
+        border-top: 2px dotted #333333;
+        border-bottom: 2px dotted #333333;
+        padding: 6px 0;
+      }
+
+      .content {
+        padding: 10px;
+      }
+
+      table.layout {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table.layout td {
+        vertical-align: top;
+        border: 2px solid #999999;
+        background: #ffffff;
+        padding: 8px;
+      }
+
+      .section-title {
+        margin: 0 0 8px;
+        font-size: 24px;
+        color: #003366;
+        border-bottom: 2px solid #003366;
+      }
+
+      .box {
+        margin-bottom: 10px;
+        border: 2px inset #cccccc;
+        background: #f9f9f9;
+        padding: 8px;
+      }
+
+      .stats {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+
+      .stats td {
+        border: 1px solid #666666;
+        padding: 6px;
+        font-size: 15px;
+      }
+
+      .stats .spacer td {
+        border: 0;
+        padding: 5px 0;
+        background: transparent;
+      }
+
+      .label {
+        width: 160px;
+        font-weight: bold;
+        background: #eeeeee;
+      }
+
+      .volt {
+        border: 4px solid #b7e300 !important;
+        background: linear-gradient(180deg, #f3ff8a, #d7ff00);
+        color: #1b1f00;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+        box-shadow: inset 0 0 0 2px #ffffcc, 0 0 14px rgba(215, 255, 0, 0.9);
+        font-weight: bold;
+      }
+
+      .tabs {
+        margin: 8px 0;
+      }
+
+      .tab-btn {
+        font-family: "Verdana", Arial, sans-serif;
+        font-size: 12px;
+        padding: 4px 8px;
+        margin-right: 5px;
+        border: 2px outset #cccccc;
+        background: #efefef;
+        cursor: pointer;
+      }
+
+      .tab-btn.active {
+        border: 2px inset #cccccc;
+        background: #d9ebff;
+      }
+
+      .panel {
+        border: 1px solid #666666;
+        background: #ffffff;
+        padding: 8px;
+      }
+
+      .panel[hidden] {
+        display: none;
+      }
+
+      .under-construction {
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+        border: 2px ridge #cccccc;
+        background: #000000;
+        padding: 3px;
+      }
+
+      .under-construction-banner {
+        display: inline-block;
+        font-family: "Verdana", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #000000;
+        border: 2px solid #000000;
+        padding: 7px 10px;
+        text-transform: uppercase;
+        background: repeating-linear-gradient(
+          -45deg,
+          #ffea00 0,
+          #ffea00 12px,
+          #111111 12px,
+          #111111 24px
+        );
+        animation: construction-shift 700ms linear infinite, construction-blink 900ms steps(1) infinite;
+      }
+
+      @keyframes construction-shift {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 28px 0;
+        }
+      }
+
+      @keyframes construction-blink {
+        50% {
+          color: #ffffff;
+        }
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .shot {
+        border: 3px ridge #cccccc;
+        background: #000000;
+      }
+
+      .shot img {
+        width: 100%;
+        display: block;
+        height: 140px;
+        object-fit: cover;
+      }
+
+      .shot.gorge-shot img {
+        object-position: center center;
+      }
+
+      .caption {
+        padding: 4px;
+        font-size: 12px;
+        background: #ffffee;
+      }
+
+      .address-btn {
+        font-family: "Verdana", Arial, sans-serif;
+        font-size: 12px;
+        padding: 6px 10px;
+        border: 2px outset #cccccc;
+        background: #ffff66;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .address {
+        margin-top: 8px;
+        display: none;
+        border: 1px dashed #333333;
+        background: #fffde9;
+        padding: 6px;
+        font-family: "Courier New", monospace;
+      }
+
+      .address-status {
+        margin-top: 8px;
+        display: none;
+        border: 1px solid #003300;
+        background: #001a00;
+        color: #66ff66;
+        padding: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+      }
+
+      .new-badge {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 1px 6px;
+        border: 1px solid #990000;
+        background: #ff3333;
+        color: #ffffff;
+        font-size: 10px;
+        font-family: "Verdana", Arial, sans-serif;
+        font-weight: bold;
+        vertical-align: middle;
+        animation: blink 700ms steps(1) infinite;
+      }
+
+      .screen-flash {
+        animation: flash 280ms ease-out;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0.2;
+        }
+      }
+
+      @keyframes flash {
+        from {
+          background-color: #ffffff;
+        }
+        to {
+          background-color: transparent;
+        }
+      }
+
+      .counter {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        background: #000000;
+        color: #00ff00;
+        display: inline-block;
+        padding: 4px 6px;
+        border: 2px inset #555555;
+      }
+
+      .footer {
+        text-align: center;
+        border-top: 3px double #000000;
+        background: #e6e6ff;
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      .browser-badges {
+        margin-top: 8px;
+      }
+
+      .browser-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 3px 4px;
+        padding: 3px 7px;
+        border: 2px outset #cccccc;
+        background: #ffffff;
+        font-family: "Verdana", Arial, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .browser-badge img {
+        width: 22px;
+        height: 22px;
+        display: block;
+        object-fit: contain;
+        background: #ffffff;
+      }
+
+      .logo-fallback {
+        display: none;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        font-size: 14px;
+        border: 1px solid #666666;
+        background: #f2f2f2;
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          max-width: calc(100% - 10px);
+          margin: 5px auto 12px;
+          border-width: 3px;
+        }
+
+        .content {
+          padding: 6px;
+        }
+
+        .title {
+          font-size: 30px;
+        }
+
+        .sub {
+          font-size: 16px;
+        }
+
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .shot img {
+          height: auto;
+          max-height: 420px;
+          object-fit: contain;
+          background: #000000;
+        }
+
+        .shot.gorge-shot img {
+          height: 240px;
+          max-height: none;
+          object-fit: cover;
+          background: #000000;
+        }
+
+        table.layout,
+        table.layout tbody,
+        table.layout tr,
+        table.layout td {
+          display: block;
+          width: 100%;
+        }
+
+        .browser-badge {
+          display: flex;
+          justify-content: center;
+          margin: 4px 0;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .top {
+          padding: 8px;
+        }
+
+        .title {
+          font-size: 24px;
+          letter-spacing: 0;
+        }
+
+        .sub {
+          font-size: 14px;
+        }
+
+        marquee {
+          font-size: 12px;
+          padding: 4px 0;
+        }
+
+        .section-title {
+          font-size: 20px;
+        }
+
+        .box,
+        .panel,
+        table.layout td {
+          padding: 6px;
+        }
+
+        .tab-btn {
+          display: inline-block;
+          margin: 0 4px 6px 0;
+          padding: 4px 6px;
+          font-size: 11px;
+        }
+
+        .stats td {
+          font-size: 13px;
+          padding: 5px;
+        }
+
+        .label {
+          width: 44%;
+        }
+
+        .new-badge {
+          margin-left: 4px;
+          padding: 1px 4px;
+          font-size: 9px;
+        }
+
+        iframe {
+          height: 300px !important;
+        }
+
+        .retro-loader {
+          padding: 8px;
+        }
+
+        .retro-loader-box {
+          padding: 10px;
+        }
+
+        .retro-loader-title {
+          font-size: 16px;
+        }
+
+        .retro-loader-status {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .page {
+          max-width: calc(100% - 6px);
+          border-width: 2px;
+        }
+
+        .title {
+          font-size: 20px;
+        }
+
+        .sub {
+          font-size: 13px;
+        }
+
+        .section-title {
+          font-size: 18px;
+        }
+
+        .counter {
+          font-size: 11px;
+          padding: 3px 5px;
+        }
+
+        .browser-badge {
+          padding: 3px 5px;
+          font-size: 10px;
+          gap: 4px;
+        }
+
+        .browser-badge img,
+        .logo-fallback {
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="retro-loader" id="retro-loader" aria-live="polite">
+      <div class="retro-loader-box">
+        <h2 class="retro-loader-title">Dial-Up Connection in Progress...</h2>
+        <p class="retro-loader-status" id="retro-loader-status">Initializing modem...</p>
+        <div class="retro-progress" aria-hidden="true">
+          <div class="retro-progress-bar" id="retro-progress-bar"></div>
+        </div>
+        <p class="retro-loader-note">Please wait while we load Erin &amp; Rory's move page</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="top">
+        <h1 class="title">ERIN &amp; RORY'S MOVE PAGE</h1>
+        <p class="sub">Welcome to our official moving announcement site</p>
+      </div>
+
+      <marquee behavior="scroll" direction="left" scrollamount="6">
+        BREAKING NEWS: We are moving from Portland back to New England in October 2026.
+      </marquee>
+
+      <div class="content">
+        <table class="layout" role="presentation">
+          <tr>
+            <td>
+              <h2 class="section-title">Main Update</h2>
+              <div class="box">
+                <p>
+                  After six meaningful years in Portland, Oregon, we are heading east. We moved here for Rory's role at
+                  Nike, and before that we called Boston home. We are excited for our next chapter near family, old
+                  friends, and familiar places.
+                </p>
+
+                <table class="stats">
+                  <tr>
+                    <td class="label">Current City</td>
+                    <td>Portland, OR</td>
+                  </tr>
+                  <tr class="spacer">
+                    <td colspan="2">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="label">Move Date</td>
+                    <td>October 2026</td>
+                  </tr>
+                  <tr class="spacer">
+                    <td colspan="2">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="label volt">Destination<span class="new-badge" id="new-badge">NEW!</span></td>
+                    <td class="volt"><b>New England</b></td>
+                  </tr>
+                </table>
+              </div>
+
+              <h2 class="section-title">Our Journey</h2>
+              <div class="tabs">
+                <button class="tab-btn active" data-panel="route">Route</button>
+                <button class="tab-btn" data-panel="memories">Memories</button>
+                <button class="tab-btn" data-panel="travels">Western Travels</button>
+              </div>
+
+              <div class="panel" id="route-panel">
+                <svg viewBox="0 0 760 340" aria-label="Journey from Boston to Portland and back to New England" style="width: 100%; border: 1px solid #666666; background: #f8fbff">
+                  <rect x="0" y="0" width="760" height="340" fill="#f8fbff"></rect>
+                  <path
+                    d="M640 110 C 560 90, 460 110, 350 150 S 190 210, 120 220"
+                    fill="none"
+                    stroke="#cc0000"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-dasharray="9 8"
+                  ></path>
+                  <path
+                    d="M120 220 C 210 136, 360 118, 500 90 S 600 70, 640 56"
+                    fill="none"
+                    stroke="#0066cc"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-dasharray="9 8"
+                  ></path>
+
+                  <circle cx="640" cy="110" r="10" fill="#003366"></circle>
+                  <circle cx="640" cy="56" r="10" fill="#003366"></circle>
+                  <circle cx="120" cy="220" r="10" fill="#003366"></circle>
+
+                  <text x="612" y="104" font-size="14" fill="#000000">Boston, MA</text>
+                  <text x="600" y="38" font-size="14" fill="#000000">New England</text>
+                  <text x="76" y="246" font-size="14" fill="#000000">Portland, OR</text>
+
+                  <rect x="18" y="276" width="16" height="10" fill="#cc0000"></rect>
+                  <text x="42" y="286" font-size="13" fill="#000000">Route 1: Boston, MA -> Portland, OR</text>
+                  <rect x="18" y="304" width="16" height="10" fill="#0066cc"></rect>
+                  <text x="42" y="314" font-size="13" fill="#000000">Route 2: Portland, OR -> New England</text>
+                </svg>
+              </div>
+
+              <div class="panel" id="memories-panel" hidden>
+                <ul>
+                  <li>Boston: our first chapter together.</li>
+                  <li>Portland: six years of growth, friends, and adventures.</li>
+                  <li>New England: next home base.</li>
+                </ul>
+                <div class="under-construction">
+                  <span class="under-construction-banner">Under Construction</span>
+                </div>
+              </div>
+
+              <div class="panel" id="travels-panel" hidden>
+                <iframe
+                  src="https://www.google.com/maps/d/embed?mid=1Oyzdo98mdvefaxb2RG-TV2-4D8Xc-l8&amp;ehbc=2E312F"
+                  width="100%"
+                  height="420"
+                  style="border: 1px solid #666666"
+                  title="Western US travel map"
+                  loading="lazy"
+                ></iframe>
+              </div>
+
+              <h2 class="section-title">Photo Gallery</h2>
+              <div class="box">
+                <div class="gallery">
+                  <div class="shot gorge-shot">
+                    <img src="images/gorge.jpg" alt="Columbia River Gorge view" />
+                    <div class="caption">Columbia Gorge</div>
+                  </div>
+                  <div class="shot">
+                    <img src="images/glaciernationalpark.png" alt="Glacier National Park landscape" />
+                    <div class="caption">Glacier National Park</div>
+                  </div>
+                  <div class="shot">
+                    <img src="images/northcascades.jpg" alt="North Cascades mountain scene" />
+                    <div class="caption">North Cascades</div>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="section-title">Address Reveal</h2>
+              <div class="box">
+                <p>Click to reveal our placeholder address:</p>
+                <button class="address-btn" id="reveal-address">REVEAL ADDRESS</button>
+                <div class="address-status" id="address-status">MODEM IDLE</div>
+                <div class="address" id="address">[New Address Placeholder, City, State ZIP]</div>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+
+      <div class="footer">
+        <p><b>With love, Erin and Rory</b></p>
+        <p>Visitor Counter: <span class="counter">0091424</span></p>
+        <p><b>Hosted by Angelfire. Best viewed with:</b></p>
+        <div class="browser-badges" aria-label="Best viewed browser badges">
+          <span class="browser-badge">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Netscape_icon.svg/120px-Netscape_icon.svg.png"
+              alt="Netscape logo"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+            />
+            <span class="logo-fallback" aria-hidden="true">N</span>
+            Netscape Navigator 4.0
+          </span>
+          <span class="browser-badge">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Internet_Explorer_10_logo.svg/120px-Internet_Explorer_10_logo.svg.png"
+              alt="Internet Explorer logo"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+            />
+            <span class="logo-fallback" aria-hidden="true">e</span>
+            Internet Explorer 5.0
+          </span>
+        </div>
+        <p>&copy; 2026 SyCoDaWg, Inc.</p>
+      </div>
+    </div>
+
+    <script>
+      const retroLoader = document.getElementById('retro-loader');
+      const retroLoaderStatus = document.getElementById('retro-loader-status');
+      const retroProgressBar = document.getElementById('retro-progress-bar');
+      const loaderMessages = [
+        'Initializing modem...',
+        'Dialing ISP...',
+        'BEEP... BEEP... CONNECTED',
+        'Authenticating user...',
+        'Loading animated GIFs...',
+        'Finalizing page render...',
+      ];
+
+      function runRetroLoader() {
+        let progress = 0;
+        let messageIndex = 0;
+        retroLoaderStatus.textContent = loaderMessages[0];
+        retroProgressBar.style.width = '0%';
+
+        const timer = window.setInterval(() => {
+          progress += Math.floor(Math.random() * 12) + 6;
+          if (progress > 100) {
+            progress = 100;
+          }
+          retroProgressBar.style.width = progress + '%';
+
+          if (progress > (messageIndex + 1) * 16 && messageIndex < loaderMessages.length - 1) {
+            messageIndex += 1;
+            retroLoaderStatus.textContent = loaderMessages[messageIndex];
+          }
+
+          if (progress >= 100) {
+            window.clearInterval(timer);
+            retroLoaderStatus.textContent = 'Connected at 56kbps. Launching page...';
+            window.setTimeout(() => {
+              retroLoader.hidden = true;
+            }, 360);
+          }
+        }, 180);
+      }
+
+      runRetroLoader();
+
+      const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+      const tabPanels = {
+        route: document.getElementById('route-panel'),
+        memories: document.getElementById('memories-panel'),
+        travels: document.getElementById('travels-panel'),
+      };
+
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach((b) => b.classList.remove('active'));
+          button.classList.add('active');
+
+          const panelName = button.getAttribute('data-panel');
+          Object.entries(tabPanels).forEach(([name, panel]) => {
+            panel.hidden = name !== panelName;
+          });
+        });
+      });
+
+      const revealButton = document.getElementById('reveal-address');
+      const address = document.getElementById('address');
+      const addressStatus = document.getElementById('address-status');
+      const finalAddress = '[New Address Placeholder, City, State ZIP]';
+      const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!?';
+      let revealTimeouts = [];
+      let scrambleInterval = null;
+
+      function clearRevealEffects() {
+        revealTimeouts.forEach((id) => window.clearTimeout(id));
+        revealTimeouts = [];
+        if (scrambleInterval) {
+          window.clearInterval(scrambleInterval);
+          scrambleInterval = null;
+        }
+      }
+
+      function randomChar() {
+        return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+      }
+
+      revealButton.addEventListener('click', () => {
+        const isShown = address.style.display === 'block';
+
+        if (isShown) {
+          clearRevealEffects();
+          address.style.display = 'none';
+          addressStatus.style.display = 'none';
+          revealButton.textContent = 'REVEAL ADDRESS';
+          revealButton.disabled = false;
+          return;
+        }
+
+        clearRevealEffects();
+        document.body.classList.add('screen-flash');
+        revealTimeouts.push(
+          window.setTimeout(() => {
+            document.body.classList.remove('screen-flash');
+          }, 280)
+        );
+
+        revealButton.disabled = true;
+        revealButton.textContent = 'CONNECTING...';
+        address.style.display = 'block';
+        addressStatus.style.display = 'block';
+        addressStatus.textContent = 'DIALING MODEM...';
+        address.textContent = '######## ########### ######## #######';
+
+        revealTimeouts.push(
+          window.setTimeout(() => {
+            addressStatus.textContent = 'BEEP... BEEP... CONNECTED';
+          }, 300)
+        );
+
+        revealTimeouts.push(
+          window.setTimeout(() => {
+            addressStatus.textContent = 'HANDSHAKE OK... DECRYPTING ADDRESS...';
+          }, 720)
+        );
+
+        let frame = 0;
+        const totalFrames = 20;
+        scrambleInterval = window.setInterval(() => {
+          frame += 1;
+          const revealCount = Math.floor((frame / totalFrames) * finalAddress.length);
+          address.textContent = finalAddress
+            .split('')
+            .map((char, index) => {
+              if (char === ' ') {
+                return ' ';
+              }
+              return index < revealCount ? char : randomChar();
+            })
+            .join('');
+
+          if (frame >= totalFrames) {
+            window.clearInterval(scrambleInterval);
+            scrambleInterval = null;
+            address.textContent = finalAddress;
+            addressStatus.textContent = 'ADDRESS DECRYPTED. CONNECTION STABLE.';
+            revealButton.disabled = false;
+            revealButton.textContent = 'HIDE ADDRESS';
+          }
+        }, 58);
+      });
+    </script>
+  </body>
+</html>

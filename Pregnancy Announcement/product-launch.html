@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Event: Baby v1.0</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    :root {
+      --bg: #0a1018;
+      --bg-2: #111b29;
+      --card: rgba(20, 30, 45, 0.62);
+      --card-strong: rgba(20, 30, 45, 0.84);
+      --ink: #e7edf5;
+      --muted: #a8b7c9;
+      --line: rgba(165, 186, 213, 0.28);
+      --accent: #79e0cc;
+      --accent-2: #7fb2ff;
+      --success: #78dd8f;
+      --error: #ff8e8e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(127, 178, 255, 0.22), transparent 35%),
+        radial-gradient(circle at 80% 20%, rgba(121, 224, 204, 0.18), transparent 40%),
+        linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1120px, 93vw);
+      margin: 0 auto;
+      padding: 1.2rem 0 1.6rem;
+    }
+
+    .panel {
+      margin-top: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+      padding: 1.1rem;
+    }
+
+    .launch-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 1.25rem;
+      background: linear-gradient(130deg, rgba(127, 178, 255, 0.2), rgba(121, 224, 204, 0.18));
+    }
+
+    .launch-hero::before {
+      content: "LIVE";
+      position: absolute;
+      top: 0.8rem;
+      right: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      border: 1px solid rgba(231, 237, 245, 0.32);
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+      color: var(--accent);
+      background: rgba(10, 16, 24, 0.45);
+      font-weight: 700;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.45rem 0;
+      font-size: clamp(1.9rem, 4.7vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-sub {
+      margin: 0;
+      color: var(--muted);
+      width: min(620px, 100%);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.95rem;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      color: #d0dbe8;
+      background: rgba(10, 16, 24, 0.35);
+    }
+
+    .launch-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--card-strong);
+      padding: 0.9rem;
+      display: grid;
+      align-content: center;
+      gap: 0.5rem;
+    }
+
+    .launch-card h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .launch-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .launch-card strong {
+      font-size: 1.4rem;
+      color: #f3f7ff;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.1rem, 2.6vw, 1.65rem);
+    }
+
+    .hint {
+      margin: 0.25rem 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(70px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .time-box {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      text-align: center;
+      padding: 0.72rem 0.4rem;
+      background: rgba(10, 16, 24, 0.45);
+    }
+
+    .time-value {
+      display: block;
+      font-size: clamp(1.3rem, 4vw, 1.95rem);
+      line-height: 1;
+      font-weight: 700;
+      color: #f2f7ff;
+    }
+
+    .time-label {
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .gallery {
+      column-count: 3;
+      column-gap: 0.7rem;
+    }
+
+    .shot {
+      break-inside: avoid;
+      margin: 0 0 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(10, 16, 24, 0.42);
+    }
+
+    .shot img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .shot.tall img { height: 320px; }
+    .shot.medium img { height: 250px; }
+    .shot.short img { height: 190px; }
+
+    .shot figcaption {
+      margin: 0;
+      padding: 0.45rem 0.6rem 0.55rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    .prediction-form { display: grid; gap: 0.7rem; }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c3d0df;
+      margin-bottom: 0.2rem;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(10, 16, 24, 0.6);
+      color: #f0f5fe;
+      font: inherit;
+      padding: 0.62rem 0.7rem;
+    }
+
+    textarea { min-height: 88px; resize: vertical; }
+
+    button {
+      border: none;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent));
+      color: #0c1421;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+
+    button:hover { transform: translateY(-1px); filter: brightness(1.04); }
+    button:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    .status { margin: 0; min-height: 1.2rem; font-size: 0.91rem; }
+    .status.ok { color: var(--success); }
+    .status.err { color: var(--error); }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 1rem 0 0.6rem;
+    }
+
+    a { color: inherit; }
+
+    .reveal { opacity: 1; transform: none; }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal, .js .reveal.visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .gallery { column-count: 2; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(1120px, 94vw); }
+      .row { grid-template-columns: 1fr; }
+      .gallery { column-count: 1; }
+      .launch-hero::before { right: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="panel launch-hero reveal" aria-label="Product launch style hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Launch Event</p>
+          <h1>Introducing Baby v1.0</h1>
+          <p class="hero-sub">
+            After months in stealth mode, we are thrilled to announce our next major release. ETA: mid-October 2026.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Release Window: Q4 2026</span>
+            <span class="chip">Status: In Development</span>
+            <span class="chip">Due Date: October 15, 2026</span>
+          </div>
+        </div>
+        <aside class="launch-card">
+          <h3>Launch Snapshot</h3>
+          <strong>+1 Teammate</strong>
+          <p>Our favorite roadmap update ever.</p>
+          <p>Thank you for being part of this chapter.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="panel reveal d1" aria-labelledby="countdown-title">
+      <h2 id="countdown-title">Launch Countdown</h2>
+      <p class="hint">Counting down to October 15, 2026.</p>
+      <div class="countdown-grid" role="timer" aria-live="polite">
+        <div class="time-box"><span id="days" class="time-value">--</span><span class="time-label">Days</span></div>
+        <div class="time-box"><span id="hours" class="time-value">--</span><span class="time-label">Hours</span></div>
+        <div class="time-box"><span id="minutes" class="time-value">--</span><span class="time-label">Minutes</span></div>
+        <div class="time-box"><span id="seconds" class="time-value">--</span><span class="time-label">Seconds</span></div>
+      </div>
+    </section>
+
+    <section class="panel reveal d2" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Launch Gallery</h2>
+      <p class="hint">Replace these placeholders with your own photos.</p>
+      <div class="gallery">
+        <figure class="shot tall">
+          <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=900&q=80" alt="Parents smiling outdoors" loading="lazy" />
+          <figcaption>Core team celebrating the upcoming release.</figcaption>
+        </figure>
+        <figure class="shot short">
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="Baby shoes and ultrasound photo" loading="lazy" />
+          <figcaption>Prototype assets are looking promising.</figcaption>
+        </figure>
+        <figure class="shot medium">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=80" alt="Family expecting a baby" loading="lazy" />
+          <figcaption>Early beta feedback has been excellent.</figcaption>
+        </figure>
+        <figure class="shot short">
+          <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=900&q=80" alt="Pregnancy announcement letters" loading="lazy" />
+          <figcaption>Release notes are almost ready.</figcaption>
+        </figure>
+        <figure class="shot tall">
+          <img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?auto=format&fit=crop&w=900&q=80" alt="Parents holding hands at sunset" loading="lazy" />
+          <figcaption>Thanks for being with us for every milestone.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="panel reveal d3" aria-labelledby="prediction-title">
+      <h2 id="prediction-title">Prediction Console</h2>
+      <p class="hint">Submit your launch predictions. Entries can be stored in Google Sheets.</p>
+
+      <form id="prediction-form" class="prediction-form">
+        <div class="row">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" type="email" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="guessDate">Predicted birth date</label>
+            <input id="guessDate" name="guessDate" type="date" required />
+          </div>
+          <div>
+            <label for="guessWeight">Predicted birth weight</label>
+            <input id="guessWeight" name="guessWeight" placeholder="e.g. 7 lb 4 oz" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="guessLength">Predicted length</label>
+            <input id="guessLength" name="guessLength" placeholder="e.g. 20 inches" />
+          </div>
+          <div>
+            <label for="guessHair">Hair color guess</label>
+            <select id="guessHair" name="guessHair">
+              <option value="">Select one</option>
+              <option>Blonde</option>
+              <option>Brown</option>
+              <option>Black</option>
+              <option>Red</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message">Extra note</label>
+          <textarea id="message" name="message" placeholder="Advice, wishes, or your confidence level?"></textarea>
+        </div>
+
+        <button id="submit-btn" type="submit">Submit Prediction</button>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer class="reveal d4">
+      <p>
+        Contact: <a href="mailto:hello@example.com">hello@example.com</a> | (555) 123-4567
+      </p>
+      <p>Thanks for celebrating this launch with us.</p>
+    </footer>
+  </main>
+
+  <script>
+    const DUE_DATE = new Date("2026-10-15T00:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diffMs = DUE_DATE - now;
+
+      if (diffMs <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById("days").textContent = String(days);
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const SHEETS_WEB_APP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    const form = document.getElementById("prediction-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    const revealElements = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      revealElements.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealElements.forEach((el) => el.classList.add("visible"));
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!SHEETS_WEB_APP_URL || SHEETS_WEB_APP_URL.includes("PASTE_YOUR")) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Set your Google Apps Script URL before submitting.";
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        submittedAt: new Date().toISOString(),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        guessDate: formData.get("guessDate"),
+        guessWeight: formData.get("guessWeight"),
+        guessLength: formData.get("guessLength"),
+        guessHair: formData.get("guessHair"),
+        message: formData.get("message")
+      };
+
+      submitBtn.disabled = true;
+      statusEl.className = "status";
+      statusEl.textContent = "Submitting prediction...";
+
+      try {
+        const response = await fetch(SHEETS_WEB_APP_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        form.reset();
+        statusEl.className = "status ok";
+        statusEl.textContent = "Thanks. Your prediction was saved.";
+      } catch (error) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Could not save your prediction. Try again.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

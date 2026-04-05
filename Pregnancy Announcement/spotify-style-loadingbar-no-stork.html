@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Now Playing: Baby On The Way</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    :root {
+      --bg: #0b0d0b;
+      --bg-2: #131713;
+      --card: #181d18;
+      --card-soft: #1f2520;
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #eef4ee;
+      --muted: #a7b1a8;
+      --spotify: #1ed760;
+      --spotify-2: #16a34a;
+      --success: #7fe4a1;
+      --error: #ff9a9a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Circular Std", "Avenir Next", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(30, 215, 96, 0.2), transparent 32%),
+        radial-gradient(circle at 80% 10%, rgba(94, 112, 98, 0.18), transparent 38%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1060px, 93vw);
+      margin: 0 auto;
+      padding: 1.1rem 0 1.8rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--card-soft), var(--card));
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.38);
+      padding: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 1.25rem;
+      min-height: 280px;
+      background: linear-gradient(180deg, var(--card-soft), var(--card));
+    }
+
+    .hero-content {
+      width: min(690px, 100%);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: min(560px, 100%);
+      border-radius: 14px;
+      border: none;
+      background: #242b24;
+      padding: 0.45rem;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-logo img {
+      width: 100%;
+      display: block;
+      border-radius: 0;
+      object-fit: contain;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.35rem 0 0.55rem;
+      font-size: clamp(1.8rem, 4.6vw, 3.3rem);
+      line-height: 1.03;
+      letter-spacing: -0.01em;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.28rem 0.6rem;
+      font-size: 0.79rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: #dce7dc;
+    }
+
+    .player {
+      margin-top: 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.7rem;
+      background: rgba(0, 0, 0, 0.24);
+    }
+
+    .player-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      margin-top: 0.45rem;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--spotify), #77e7a1);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+    }
+
+    .hint {
+      margin: 0.3rem 0 0.75rem;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .track-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.18s ease, border-color 0.18s ease;
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      align-items: center;
+    }
+
+    .track-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .track-card img {
+      width: 78px;
+      height: 78px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .track-meta {
+      padding: 0.48rem 0.62rem;
+      min-width: 0;
+    }
+
+    .track-title {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #edf4ee;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-subtitle {
+      margin: 0;
+      margin-top: 0.16rem;
+      font-size: 0.79rem;
+      color: var(--muted);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .prediction-form { display: grid; gap: 0.65rem; }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.62rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.85rem;
+      color: #d1d8d1;
+      font-weight: 600;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+      padding: 0.62rem 0.68rem;
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    .slider-wrap {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .slider-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .slider-value {
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      padding: 0;
+      height: 1.4rem;
+      background: transparent;
+      accent-color: var(--spotify);
+    }
+
+    button {
+      border: none;
+      background: linear-gradient(90deg, var(--spotify), var(--spotify-2));
+      color: #08200f;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+
+    button:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    button:disabled { opacity: 0.68; cursor: not-allowed; }
+
+    .status { margin: 0; min-height: 1.2rem; font-size: 0.9rem; }
+    .status.ok { color: var(--success); }
+    .status.err { color: var(--error); }
+
+    .fans-like-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      gap: 1rem;
+      justify-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .fan-item {
+      text-align: center;
+    }
+
+    .fan-item img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .fan-item img.tom-petty {
+      object-position: 50% 28%;
+    }
+
+    .fan-name {
+      margin: 0.45rem 0 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    footer {
+      margin: 1rem 0 0.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    a { color: inherit; }
+
+    .reveal { opacity: 1; transform: none; }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.58s ease, transform 0.58s ease;
+    }
+
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+
+    @media (max-width: 860px) {
+      .hero {
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(1060px, 94vw); }
+      .row { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal,
+      .js .reveal.visible,
+      .track-card,
+      button {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card hero reveal" aria-label="Spotify-style announcement hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <img src="Images/mcgrath-ify.png" alt="McGrath Family Spotify-style header image" />
+        </div>
+        <p class="eyebrow">Now Playing</p>
+        <h1>Baby On The Way</h1>
+        <p class="sub">Our most anticipated release yet arrives mid-October 2026.</p>
+
+        <div class="meta-row">
+          <span class="pill">Album: The Tortured Parents Department</span>
+          <span class="pill">Release: October 2026</span>
+        </div>
+
+        <div class="player" aria-label="Decorative player bar">
+          <div class="player-top"><span id="player-current-time">0:00</span><span>3:12</span></div>
+          <div class="progress"><div class="bar"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card reveal d2" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Popular Releases</h2>
+      <div class="gallery">
+        <article class="track-card">
+          <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=900&q=80" alt="Parents smiling outdoors" loading="lazy" />
+          <div class="track-meta">
+            <p class="track-title">Sunset Walks</p>
+            <p class="track-subtitle">Early chapter highlights and smiles</p>
+          </div>
+        </article>
+        <article class="track-card">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=80" alt="Family expecting a baby" loading="lazy" />
+          <div class="track-meta">
+            <p class="track-title">Growing Together</p>
+            <p class="track-subtitle">The core team getting ready for launch</p>
+          </div>
+        </article>
+        <article class="track-card">
+          <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=900&q=80" alt="Pregnancy announcement letters" loading="lazy" />
+          <div class="track-meta">
+            <p class="track-title">One More Surprise</p>
+            <p class="track-subtitle">A moment we have been waiting to share</p>
+          </div>
+        </article>
+        <article class="track-card">
+          <img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?auto=format&fit=crop&w=900&q=80" alt="Parents holding hands at sunset" loading="lazy" />
+          <div class="track-meta">
+            <p class="track-title">New Chapter</p>
+            <p class="track-subtitle">Counting down to October together</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card reveal d3" aria-labelledby="prediction-title">
+      <h2 id="prediction-title">Listener Survey</h2>
+      <p class="hint">Submit your guesses!</p>
+
+      <form id="prediction-form" class="prediction-form">
+        <div class="row">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="guessDate">Predicted birth date</label>
+            <input id="guessDate" name="guessDate" type="date" required />
+          </div>
+          <div class="slider-wrap">
+            <div class="slider-label-row">
+              <label for="guessWeight">Predicted birth weight</label>
+              <span id="guessWeightValue" class="slider-value">7.5 lb</span>
+            </div>
+            <input id="guessWeight" name="guessWeight" type="range" min="6.0" max="10.0" step="0.1" value="7.5" required />
+          </div>
+        </div>
+
+        <div class="slider-wrap">
+          <div class="slider-label-row">
+            <label for="guessLength">Predicted birth length</label>
+            <span id="guessLengthValue" class="slider-value">20 in</span>
+          </div>
+          <input id="guessLength" name="guessLength" type="range" min="17" max="23" step="0.1" value="20" />
+        </div>
+
+        <div>
+          <label for="message">Extra liner notes</label>
+          <textarea id="message" name="message" placeholder="Any advice or other wishes?"></textarea>
+        </div>
+
+        <button id="submit-btn" type="submit">Submit Prediction</button>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card reveal d4" aria-labelledby="fans-like-title">
+      <h2 id="fans-like-title">Fans Also Like</h2>
+      <div class="fans-like-grid">
+        <div class="fan-item">
+          <img class="tom-petty" src="https://commons.wikimedia.org/wiki/Special:FilePath/Tompetty%20indy.jpg" alt="Tom Petty and the Heartbreakers band image" loading="lazy" />
+          <p class="fan-name">Tom Petty and<br>the Diaper-Makers</p>
+        </div>
+        <div class="fan-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Post_Malone_2018.jpg" alt="Post Malone image" loading="lazy" />
+          <p class="fan-name">Post-Partum<br>Malone</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <p>Thanks for listening in on our big news.</p>
+      <p>&copy; 2026 Rock-A-Fella Records and Young Mommy Entertainment</p>
+    </footer>
+  </main>
+
+  <script>
+    const RELEASE_START = new Date("2026-01-15T00:00:00");
+    const RELEASE_DATE = new Date("2026-10-15T00:00:00");
+
+    function updateReleaseProgress() {
+      const now = new Date();
+      const totalMs = RELEASE_DATE - RELEASE_START;
+      const elapsedMs = Math.min(Math.max(now - RELEASE_START, 0), totalMs);
+      const percentage = totalMs > 0 ? (elapsedMs / totalMs) * 100 : 0;
+      const playerBarEl = document.querySelector(".bar");
+      const playerCurrentTimeEl = document.getElementById("player-current-time");
+      const clampedPercentage = Math.max(0, Math.min(100, percentage));
+      const totalTrackSeconds = (3 * 60) + 12;
+      const currentTrackSeconds = Math.round((clampedPercentage / 100) * totalTrackSeconds);
+      const mins = Math.floor(currentTrackSeconds / 60);
+      const secs = currentTrackSeconds % 60;
+
+      playerBarEl.style.width = `${clampedPercentage}%`;
+      playerCurrentTimeEl.textContent = `${mins}:${String(secs).padStart(2, "0")}`;
+    }
+
+    updateReleaseProgress();
+    setInterval(updateReleaseProgress, 60000);
+
+    const SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzSCiJuZfirSdA9ae6xOdsyphZ43QkD1oCATK0HO-nLVo_Mgu45761y_s_WpPFEongg/exec";
+
+    const form = document.getElementById("prediction-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+    const guessWeightEl = document.getElementById("guessWeight");
+    const guessWeightValueEl = document.getElementById("guessWeightValue");
+    const guessLengthEl = document.getElementById("guessLength");
+    const guessLengthValueEl = document.getElementById("guessLengthValue");
+
+    function syncWeightLabel() {
+      guessWeightValueEl.textContent = `${Number(guessWeightEl.value).toFixed(1)} lb`;
+    }
+    guessWeightEl.addEventListener("input", syncWeightLabel);
+    syncWeightLabel();
+
+    function syncLengthLabel() {
+      guessLengthValueEl.textContent = `${Number(guessLengthEl.value).toFixed(1)} in`;
+    }
+    guessLengthEl.addEventListener("input", syncLengthLabel);
+    syncLengthLabel();
+
+    const revealElements = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealElements.forEach((el) => el.classList.add("visible"));
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!SHEETS_WEB_APP_URL || SHEETS_WEB_APP_URL.includes("PASTE_YOUR")) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Set your Google Apps Script URL before submitting.";
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        submittedAt: new Date().toISOString(),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        guessDate: formData.get("guessDate"),
+        guessWeight: formData.get("guessWeight"),
+        guessLength: formData.get("guessLength"),
+        message: formData.get("message")
+      };
+
+      submitBtn.disabled = true;
+      statusEl.className = "status";
+      statusEl.textContent = "Submitting prediction...";
+
+      try {
+        await fetch(SHEETS_WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(payload)
+        });
+
+        form.reset();
+        guessWeightEl.value = "7.5";
+        guessLengthEl.value = "20";
+        syncWeightLabel();
+        syncLengthLabel();
+        statusEl.className = "status ok";
+        statusEl.textContent = "Thanks. Your prediction was submitted.";
+      } catch (error) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Could not save your prediction. Try again.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

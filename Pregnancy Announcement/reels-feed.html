@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baby Reveal Feed</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    :root {
+      --bg: #eef1ed;
+      --bg-2: #dfe5df;
+      --card: rgba(250, 252, 249, 0.72);
+      --line: rgba(55, 70, 65, 0.16);
+      --ink: #1f2a2e;
+      --muted: #5e6b70;
+      --accent: #4f6d64;
+      --accent-2: #6f8288;
+      --success: #2f7d52;
+      --error: #b64040;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, #f4f8f1 0%, transparent 35%),
+        radial-gradient(circle at 85% 18%, #e7eef1 0%, transparent 40%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    .feed {
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-y: contain;
+    }
+
+    .panel {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      align-items: center;
+      padding: 1.2rem;
+      position: relative;
+    }
+
+    .panel-inner {
+      width: min(900px, 94vw);
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 24px 55px rgba(31, 42, 46, 0.13);
+      padding: clamp(1rem, 2.2vw, 1.6rem);
+      transform: translateY(34px) scale(0.985);
+      opacity: 0;
+      transition: transform 0.65s ease, opacity 0.65s ease;
+    }
+
+    .panel.active .panel-inner,
+    .panel:first-child .panel-inner {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-2);
+    }
+
+    h1 {
+      margin: 0.4rem 0 0.6rem;
+      font-size: clamp(1.9rem, 5.8vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.3rem, 3.1vw, 2rem);
+    }
+
+    .lede,
+    .hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(0.98rem, 2.2vw, 1.08rem);
+    }
+
+    .hero-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.55);
+      padding: 0.72rem;
+    }
+
+    .stat .k {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent-2);
+      margin: 0;
+    }
+
+    .stat .v {
+      margin: 0.2rem 0 0;
+      font-size: 1.05rem;
+      font-weight: 650;
+      color: var(--ink);
+    }
+
+    .countdown-grid {
+      margin-top: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(62px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .time-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.55);
+      text-align: center;
+      padding: 0.72rem 0.35rem;
+    }
+
+    .time-value {
+      display: block;
+      font-size: clamp(1.35rem, 4.8vw, 2.15rem);
+      font-weight: 750;
+      line-height: 1;
+    }
+
+    .time-label {
+      display: block;
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .gallery {
+      column-count: 2;
+      column-gap: 0.65rem;
+      margin-top: 0.9rem;
+    }
+
+    .tile {
+      break-inside: avoid;
+      margin: 0 0 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .tile img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .tile.tall img { height: 300px; }
+    .tile.medium img { height: 240px; }
+    .tile.short img { height: 185px; }
+
+    .tile figcaption {
+      margin: 0;
+      padding: 0.45rem 0.58rem 0.55rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .prediction-form { margin-top: 0.85rem; display: grid; gap: 0.65rem; }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.22rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font: inherit;
+      padding: 0.62rem 0.68rem;
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    button {
+      border: none;
+      background: linear-gradient(92deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.16s ease, opacity 0.16s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: 0.62; cursor: not-allowed; }
+
+    .status {
+      margin: 0;
+      min-height: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .status.ok { color: var(--success); }
+    .status.err { color: var(--error); }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    a { color: inherit; }
+
+    .feed-nav {
+      position: fixed;
+      right: 0.7rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 9;
+      display: grid;
+      gap: 0.42rem;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid rgba(31, 42, 46, 0.3);
+      background: rgba(255, 255, 255, 0.55);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .dot.active {
+      transform: scale(1.35);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 760px) {
+      .hero-grid,
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        column-count: 1;
+      }
+
+      .feed-nav {
+        right: 0.35rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .feed { scroll-behavior: auto; }
+      .panel-inner,
+      .panel.active .panel-inner,
+      .panel:first-child .panel-inner {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+      .dot,
+      button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="feed-nav" aria-label="Feed sections">
+    <button class="dot active" type="button" data-target="0" aria-label="Go to announcement"></button>
+    <button class="dot" type="button" data-target="1" aria-label="Go to countdown"></button>
+    <button class="dot" type="button" data-target="2" aria-label="Go to gallery"></button>
+    <button class="dot" type="button" data-target="3" aria-label="Go to predictions"></button>
+    <button class="dot" type="button" data-target="4" aria-label="Go to contact"></button>
+  </nav>
+
+  <main class="feed" id="feed">
+    <section class="panel" data-index="0">
+      <div class="panel-inner">
+        <p class="tag">Featured Story</p>
+        <h1>We&apos;re Growing Our Family</h1>
+        <p class="lede">Swipe or scroll down like a vertical feed to see the full announcement.</p>
+        <div class="hero-grid">
+          <div class="stat">
+            <p class="k">Announcement</p>
+            <p class="v">Baby arriving October 15, 2026</p>
+          </div>
+          <div class="stat">
+            <p class="k">Status</p>
+            <p class="v">Our best chapter yet is underway</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-index="1">
+      <div class="panel-inner">
+        <h2>Countdown</h2>
+        <p class="hint">Counting down to mid-October 2026.</p>
+        <div class="countdown-grid" role="timer" aria-live="polite">
+          <div class="time-box"><span id="days" class="time-value">--</span><span class="time-label">Days</span></div>
+          <div class="time-box"><span id="hours" class="time-value">--</span><span class="time-label">Hours</span></div>
+          <div class="time-box"><span id="minutes" class="time-value">--</span><span class="time-label">Minutes</span></div>
+          <div class="time-box"><span id="seconds" class="time-value">--</span><span class="time-label">Seconds</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-index="2">
+      <div class="panel-inner">
+        <h2>Gallery</h2>
+        <p class="hint">Replace these placeholders with your own photos anytime.</p>
+        <div class="gallery">
+          <figure class="tile tall">
+            <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=1000&q=80" alt="Parents smiling outdoors" loading="lazy" />
+            <figcaption>We are grateful to share this season with you.</figcaption>
+          </figure>
+          <figure class="tile short">
+            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1000&q=80" alt="Baby shoes and ultrasound photo" loading="lazy" />
+            <figcaption>Small shoes, huge anticipation.</figcaption>
+          </figure>
+          <figure class="tile medium">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1000&q=80" alt="Family expecting a baby" loading="lazy" />
+            <figcaption>Counting down one day at a time.</figcaption>
+          </figure>
+          <figure class="tile short">
+            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1000&q=80" alt="Pregnancy announcement letters" loading="lazy" />
+            <figcaption>Thank you for celebrating with us.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-index="3">
+      <div class="panel-inner">
+        <h2>Baby Predictions</h2>
+        <p class="hint">Drop your prediction below. Entries can be saved to Google Sheets.</p>
+
+        <form id="prediction-form" class="prediction-form">
+          <div class="row">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="name" required />
+            </div>
+            <div>
+              <label for="email">Email (optional)</label>
+              <input id="email" name="email" type="email" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="guessDate">Predicted birth date</label>
+              <input id="guessDate" name="guessDate" type="date" required />
+            </div>
+            <div>
+              <label for="guessWeight">Predicted birth weight</label>
+              <input id="guessWeight" name="guessWeight" placeholder="e.g. 7 lb 4 oz" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="guessLength">Predicted length</label>
+              <input id="guessLength" name="guessLength" placeholder="e.g. 20 inches" />
+            </div>
+            <div>
+              <label for="guessHair">Hair color guess</label>
+              <select id="guessHair" name="guessHair">
+                <option value="">Select one</option>
+                <option>Blonde</option>
+                <option>Brown</option>
+                <option>Black</option>
+                <option>Red</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message">Extra note</label>
+            <textarea id="message" name="message" placeholder="Any guesses, advice, or wishes?"></textarea>
+          </div>
+
+          <button id="submit-btn" type="submit">Submit Prediction</button>
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel" data-index="4">
+      <div class="panel-inner footer">
+        <h2>Stay Connected</h2>
+        <p>Questions or love notes: <a href="mailto:hello@example.com">hello@example.com</a></p>
+        <p>(555) 123-4567</p>
+        <p>Thanks for scrolling through our big news.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const DUE_DATE = new Date("2026-10-15T00:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diffMs = DUE_DATE - now;
+
+      if (diffMs <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById("days").textContent = String(days);
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const SHEETS_WEB_APP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    const form = document.getElementById("prediction-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!SHEETS_WEB_APP_URL || SHEETS_WEB_APP_URL.includes("PASTE_YOUR")) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Set your Google Apps Script URL before submitting.";
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        submittedAt: new Date().toISOString(),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        guessDate: formData.get("guessDate"),
+        guessWeight: formData.get("guessWeight"),
+        guessLength: formData.get("guessLength"),
+        guessHair: formData.get("guessHair"),
+        message: formData.get("message")
+      };
+
+      submitBtn.disabled = true;
+      statusEl.className = "status";
+      statusEl.textContent = "Submitting prediction...";
+
+      try {
+        const response = await fetch(SHEETS_WEB_APP_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        form.reset();
+        statusEl.className = "status ok";
+        statusEl.textContent = "Thanks. Your prediction was saved.";
+      } catch (error) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Could not save your prediction. Try again.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    const feed = document.getElementById("feed");
+    const panels = Array.from(document.querySelectorAll(".panel"));
+    const dots = Array.from(document.querySelectorAll(".dot"));
+
+    function setActive(index) {
+      panels.forEach((panel, i) => {
+        panel.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.dataset.index || 0);
+            setActive(idx);
+          }
+        });
+      }, { threshold: 0.6, root: feed });
+
+      panels.forEach((panel) => observer.observe(panel));
+    } else {
+      setActive(0);
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const target = Number(dot.dataset.target || 0);
+        panels[target].scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>

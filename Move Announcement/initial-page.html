@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>We're Moving Back to New England</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-start: #f4efe6;
+        --bg-end: #dce9ef;
+        --ink: #1f2a35;
+        --ink-soft: #4c5f72;
+        --accent: #2f6f5f;
+        --accent-soft: #97c8b0;
+        --card: rgba(255, 255, 255, 0.72);
+        --border: rgba(31, 42, 53, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Manrope", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(140deg, var(--bg-start), var(--bg-end));
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .announcement {
+        width: min(760px, 100%);
+        backdrop-filter: blur(6px);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: clamp(24px, 4vw, 44px);
+        box-shadow: 0 24px 60px rgba(20, 31, 43, 0.15);
+        animation: rise 700ms ease-out both;
+      }
+
+      .kicker {
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        margin: 0 0 14px;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 700;
+        line-height: 1.08;
+        font-size: clamp(2rem, 5.2vw, 3.2rem);
+        color: #1a2530;
+      }
+
+      .subtitle {
+        margin: 16px 0 0;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        line-height: 1.65;
+        color: var(--ink-soft);
+      }
+
+      .details {
+        margin: 28px 0 0;
+        padding: 18px;
+        border-radius: 14px;
+        border: 1px dashed rgba(47, 111, 95, 0.5);
+        background: rgba(151, 200, 176, 0.18);
+      }
+
+      .details p {
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      .interactive {
+        margin: 22px 0 0;
+        padding: 18px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .interactive h2 {
+        margin: 0 0 10px;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+        line-height: 1.2;
+      }
+
+      .interactive p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+
+      .map-toggle {
+        display: inline-flex;
+        gap: 8px;
+        margin: 14px 0 12px;
+        padding: 6px;
+        border-radius: 999px;
+        background: rgba(31, 42, 53, 0.08);
+      }
+
+      .map-tab {
+        border: 0;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font: inherit;
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .map-tab[aria-selected="true"] {
+        background: #ffffff;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .map-panel {
+        margin-top: 8px;
+      }
+
+      .map-panel[hidden] {
+        display: none;
+      }
+
+      .map-figure {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid rgba(31, 42, 53, 0.12);
+        background: linear-gradient(180deg, #edf3f7, #f8fbfd);
+      }
+
+      .map-caption {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: var(--ink-soft);
+      }
+
+      .pins {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .pins li {
+        font-size: 0.94rem;
+        color: var(--ink-soft);
+      }
+
+      .travel-map {
+        margin-top: 8px;
+      }
+
+      .travel-map iframe {
+        width: 100%;
+        height: 480px;
+        border: 0;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(20, 31, 43, 0.12);
+      }
+
+      .address-card {
+        margin: 24px 0 0;
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(47, 111, 95, 0.25);
+        background: linear-gradient(135deg, rgba(151, 200, 176, 0.18), rgba(220, 233, 239, 0.66));
+        box-shadow: 0 14px 30px rgba(20, 31, 43, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .address-card button {
+        justify-self: start;
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font: inherit;
+        font-weight: 700;
+        color: #ffffff;
+        background: linear-gradient(120deg, #2f6f5f, #4f8f81);
+        cursor: pointer;
+        position: relative;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+        box-shadow: 0 8px 20px rgba(47, 111, 95, 0.35);
+      }
+
+      .address-card button:hover {
+        transform: translateY(-1px);
+      }
+
+      .address-card button:active {
+        transform: translateY(1px);
+      }
+
+      .address-card button::after {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 999px;
+        border: 2px solid rgba(79, 143, 129, 0.5);
+        opacity: 0;
+        transform: scale(0.85);
+        transition: opacity 220ms ease, transform 220ms ease;
+      }
+
+      .address-card.is-visible button::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .address-value {
+        margin: 0;
+        font-size: 1rem;
+        color: var(--ink);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(8px);
+        transition: max-height 320ms ease, opacity 240ms ease, transform 320ms ease;
+      }
+
+      .address-value.is-visible {
+        max-height: 100px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .confetti {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 40;
+      }
+
+      .signoff {
+        margin: 28px 0 0;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .fade {
+        animation: fade 900ms ease-out both;
+        animation-delay: 180ms;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 520px) {
+        body {
+          padding: 14px;
+        }
+
+        .announcement {
+          border-radius: 16px;
+        }
+
+        .travel-map iframe {
+          height: 360px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="announcement">
+      <p class="kicker">Big Update</p>
+      <h1>We’re moving back to New England.</h1>
+
+      <p class="subtitle fade">
+        After six great years in Portland, Oregon, we’re heading east. We first moved to Portland for my role at Nike,
+        and before that, we lived in Boston. New England has always felt like home, and we’re excited to be back near
+        family, old friends, and familiar places.
+      </p>
+
+      <section class="details fade" aria-label="Move details">
+        <p>
+          We’re planning to make the move in <strong>October 2026</strong>. Our new address will be:
+          <strong>[New Address Placeholder, City, State ZIP]</strong>. We’ll also share housewarming details soon. For
+          now, we wanted to share the news and say how grateful we are for everyone who made Portland such a meaningful
+          chapter in our lives.
+        </p>
+      </section>
+
+      <section class="interactive fade" aria-label="Our journey">
+        <h2>Our Journey</h2>
+        <p>Switch views to see our Portland-to-New England route and a few chapter highlights.</p>
+
+        <div class="map-toggle" role="tablist" aria-label="Journey view toggle">
+          <button class="map-tab" id="route-tab" role="tab" aria-selected="true" aria-controls="route-panel">
+            Route
+          </button>
+          <button class="map-tab" id="memories-tab" role="tab" aria-selected="false" aria-controls="memories-panel">
+            Memories
+          </button>
+          <button class="map-tab" id="travels-tab" role="tab" aria-selected="false" aria-controls="travels-panel">
+            Western Travels
+          </button>
+        </div>
+
+        <div class="map-panel" id="route-panel" role="tabpanel" aria-labelledby="route-tab">
+          <svg class="map-figure" viewBox="0 0 700 320" aria-label="Stylized route map from Portland to New England">
+            <rect x="0" y="0" width="700" height="320" fill="transparent" />
+            <path
+              d="M85 195 C 180 90, 340 90, 455 165 S 605 198, 640 135"
+              fill="none"
+              stroke="#2f6f5f"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-dasharray="10 10"
+            />
+            <circle cx="85" cy="195" r="11" fill="#1f2a35" />
+            <circle cx="640" cy="135" r="11" fill="#2f6f5f" />
+            <text x="56" y="225" font-size="15" fill="#1f2a35">Portland</text>
+            <text x="560" y="110" font-size="15" fill="#1f2a35">New England</text>
+            <text x="284" y="132" font-size="13" fill="#4c5f72">6-year chapter in Oregon</text>
+          </svg>
+          <p class="map-caption">From the Pacific Northwest back to where our story started.</p>
+        </div>
+
+        <div class="map-panel" id="memories-panel" role="tabpanel" aria-labelledby="memories-tab" hidden>
+          <ul class="pins">
+            <li><strong>Boston:</strong> Where we built our first home together.</li>
+            <li><strong>Portland:</strong> Six meaningful years, amazing friends, and the Nike chapter.</li>
+            <li><strong>New England:</strong> Next stop and a fresh start close to family.</li>
+          </ul>
+        </div>
+
+        <div class="map-panel travel-map" id="travels-panel" role="tabpanel" aria-labelledby="travels-tab" hidden>
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1Oyzdo98mdvefaxb2RG-TV2-4D8Xc-l8&amp;ehbc=2E312F"
+            title="Map of places we visited in the Western United States"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <p class="map-caption">A few favorite places from our Western U.S. chapter.</p>
+        </div>
+      </section>
+
+      <section class="interactive fade" aria-label="Address reveal">
+        <h2>New Address</h2>
+        <p>Click to reveal our placeholder address card.</p>
+        <div class="address-card" id="address-card">
+          <button id="reveal-address" type="button" aria-expanded="false">Reveal Address</button>
+          <p class="address-value" id="address-value" aria-live="polite">[New Address Placeholder, City, State ZIP]</p>
+        </div>
+      </section>
+
+      <p class="signoff fade">With love,<br />Erin and Rory</p>
+    </main>
+    <canvas class="confetti" id="confetti-canvas" aria-hidden="true"></canvas>
+    <script>
+      const tabs = Array.from(document.querySelectorAll(".map-tab"));
+      const panels = tabs
+        .map((tab) => document.getElementById(tab.getAttribute("aria-controls")))
+        .filter(Boolean);
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
+          const selectedPanelId = tab.getAttribute("aria-controls");
+          panels.forEach((panel) => {
+            panel.hidden = panel.id !== selectedPanelId;
+          });
+        });
+      });
+
+      const revealButton = document.getElementById("reveal-address");
+      const addressValue = document.getElementById("address-value");
+      const addressCard = document.getElementById("address-card");
+      const confettiCanvas = document.getElementById("confetti-canvas");
+      const confettiCtx = confettiCanvas.getContext("2d");
+      const confettiPieces = [];
+      let confettiAnimation = null;
+
+      function sizeCanvas() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+      }
+
+      function runConfetti() {
+        const colors = ["#2f6f5f", "#4f8f81", "#f5c26b", "#e67f6f", "#4c7bd9"];
+        const burstCount = 120;
+        const originX = confettiCanvas.width / 2;
+        const originY = confettiCanvas.height * 0.35;
+
+        for (let i = 0; i < burstCount; i += 1) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 2 + Math.random() * 6;
+          confettiPieces.push({
+            x: originX,
+            y: originY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2,
+            size: 4 + Math.random() * 7,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            life: 70 + Math.random() * 30,
+            spin: (Math.random() - 0.5) * 0.2,
+            tilt: Math.random() * Math.PI,
+          });
+        }
+
+        if (!confettiAnimation) {
+          animateConfetti();
+        }
+      }
+
+      function animateConfetti() {
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+        for (let i = confettiPieces.length - 1; i >= 0; i -= 1) {
+          const piece = confettiPieces[i];
+          piece.x += piece.vx;
+          piece.y += piece.vy;
+          piece.vy += 0.08;
+          piece.tilt += piece.spin;
+          piece.life -= 1;
+
+          confettiCtx.save();
+          confettiCtx.translate(piece.x, piece.y);
+          confettiCtx.rotate(piece.tilt);
+          confettiCtx.fillStyle = piece.color;
+          confettiCtx.globalAlpha = Math.max(piece.life / 100, 0);
+          confettiCtx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size * 0.6);
+          confettiCtx.restore();
+
+          if (piece.life <= 0 || piece.y > confettiCanvas.height + 40) {
+            confettiPieces.splice(i, 1);
+          }
+        }
+
+        if (confettiPieces.length > 0) {
+          confettiAnimation = window.requestAnimationFrame(animateConfetti);
+        } else {
+          confettiAnimation = null;
+          confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        }
+      }
+
+      sizeCanvas();
+      window.addEventListener("resize", sizeCanvas);
+
+      revealButton.addEventListener("click", () => {
+        const showing = addressValue.classList.contains("is-visible");
+
+        if (showing) {
+          addressValue.classList.remove("is-visible");
+          addressCard.classList.remove("is-visible");
+          revealButton.setAttribute("aria-expanded", "false");
+          revealButton.textContent = "Reveal Address";
+          return;
+        }
+
+        addressValue.classList.add("is-visible");
+        addressCard.classList.add("is-visible");
+        revealButton.setAttribute("aria-expanded", "true");
+        revealButton.textContent = "Hide Address";
+        runConfetti();
+      });
+    </script>
+  </body>
+</html>

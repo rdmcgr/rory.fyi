@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We're Growing Our Family</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    :root {
+      --bg: #eff2ee;
+      --paper: #fbfcfa;
+      --ink: #1f2a2e;
+      --accent: #4b6a63;
+      --accent-2: #607780;
+      --muted: #5f6e73;
+      --border: #d7dfdb;
+      --success: #2f7d52;
+      --error: #b64040;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, #dfe7e0 0%, transparent 30%),
+        radial-gradient(circle at 85% 20%, #dde7ea 0%, transparent 35%),
+        linear-gradient(180deg, var(--bg) 0%, #f8faf7 100%);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 1.25rem 0;
+    }
+
+    .card {
+      background: rgba(251, 252, 250, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      border-radius: 20px;
+      box-shadow: 0 18px 45px rgba(31, 42, 46, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1.2rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 1.2rem;
+      text-align: left;
+      padding: 2rem 1.4rem;
+      margin-top: 0.8rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(75, 106, 99, 0.15), rgba(96, 119, 128, 0.15));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -5% -35% auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.45), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .layer-word {
+      position: absolute;
+      top: -0.65rem;
+      left: 0;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 5.4rem);
+      line-height: 0.8;
+      color: rgba(31, 42, 46, 0.09);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+      pointer-events: none;
+    }
+
+    .kicker {
+      margin: 0;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin: 0.35rem 0 0.6rem;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      width: min(620px, 100%);
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .due-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.42rem 0.85rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 18px 36px rgba(31, 42, 46, 0.2);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 290px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05);
+    }
+
+    section {
+      margin-top: 1rem;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+
+    .hint {
+      margin: 0 0 0.8rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(65px, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.8rem;
+    }
+
+    .time-box {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+      text-align: center;
+      padding: 0.7rem 0.3rem;
+    }
+
+    .time-value {
+      display: block;
+      font-size: clamp(1.25rem, 4vw, 2rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .time-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .gallery {
+      column-count: 3;
+      column-gap: 0.75rem;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin: 0 0 0.75rem;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: 0 10px 24px rgba(31, 42, 46, 0.09);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item.tall img {
+      height: 320px;
+    }
+
+    .gallery-item.medium img {
+      height: 250px;
+    }
+
+    .gallery-item.short img {
+      height: 180px;
+    }
+
+    .gallery-item figcaption {
+      padding: 0.45rem 0.6rem 0.55rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: rgba(251, 252, 250, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal, .js .reveal.visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    .prediction-form {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font: inherit;
+      padding: 0.62rem 0.7rem;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .status {
+      margin: 0;
+      font-size: 0.92rem;
+      min-height: 1.25rem;
+    }
+
+    .status.ok { color: var(--success); }
+    .status.err { color: var(--error); }
+
+    footer {
+      margin: 1rem 0 0.8rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    a { color: inherit; }
+
+    @media (max-width: 620px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 1.3rem 1rem;
+        gap: 0.9rem;
+      }
+
+      .hero-visual img {
+        min-height: 220px;
+      }
+
+      .gallery {
+        column-count: 1;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        width: min(1080px, 94vw);
+      }
+    }
+
+    @media (min-width: 621px) and (max-width: 940px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        column-count: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card hero reveal" aria-label="Pregnancy announcement hero">
+      <div class="hero-copy">
+        <p class="layer-word">Growing</p>
+        <p class="kicker">Special Announcement</p>
+        <h1>We Have a Tiny Co-Author on the Way</h1>
+        <p>
+          Our biggest project yet is officially in progress. Baby arriving mid-October 2026 and we
+          could not be more excited to share this with you.
+        </p>
+        <div class="due-badge">Due: October 15, 2026</div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1489702932469-03abf7bff7ff?auto=format&fit=crop&w=1000&q=80" alt="Expecting parents holding ultrasound photo" />
+      </div>
+    </section>
+
+    <section class="card reveal delay-1" aria-labelledby="countdown-title">
+      <h2 id="countdown-title">Countdown to Due Date</h2>
+      <p class="hint">Counting down to October 15, 2026.</p>
+      <div class="countdown-grid" role="timer" aria-live="polite">
+        <div class="time-box"><span id="days" class="time-value">--</span><span class="time-label">Days</span></div>
+        <div class="time-box"><span id="hours" class="time-value">--</span><span class="time-label">Hours</span></div>
+        <div class="time-box"><span id="minutes" class="time-value">--</span><span class="time-label">Minutes</span></div>
+        <div class="time-box"><span id="seconds" class="time-value">--</span><span class="time-label">Seconds</span></div>
+      </div>
+    </section>
+
+    <section class="card reveal delay-2" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Photo Gallery</h2>
+      <p class="hint">Swap these placeholder photos for your own images anytime.</p>
+      <div class="gallery">
+        <figure class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=900&q=80" alt="Parents smiling outdoors" loading="lazy" />
+          <figcaption>Finding joy in every step of this season.</figcaption>
+        </figure>
+        <figure class="gallery-item short">
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="Baby shoes and ultrasound photo" loading="lazy" />
+          <figcaption>Small shoes, huge anticipation.</figcaption>
+        </figure>
+        <figure class="gallery-item medium">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=80" alt="Family expecting a baby" loading="lazy" />
+          <figcaption>Counting blessings, one week at a time.</figcaption>
+        </figure>
+        <figure class="gallery-item short">
+          <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=900&q=80" alt="Pregnancy announcement letters" loading="lazy" />
+          <figcaption>Our next chapter is almost here.</figcaption>
+        </figure>
+        <figure class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?auto=format&fit=crop&w=900&q=80" alt="Parents holding hands at sunset" loading="lazy" />
+          <figcaption>So grateful to share this milestone with you.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card reveal delay-3" aria-labelledby="prediction-title">
+      <h2 id="prediction-title">Baby Predictions</h2>
+      <p class="hint">
+        Leave your guess below. This form can send each submission to Google Sheets.
+      </p>
+
+      <form id="prediction-form" class="prediction-form">
+        <div class="row">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" type="email" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="guessDate">Predicted birth date</label>
+            <input id="guessDate" name="guessDate" type="date" required />
+          </div>
+          <div>
+            <label for="guessWeight">Predicted birth weight</label>
+            <input id="guessWeight" name="guessWeight" placeholder="e.g. 7 lb 4 oz" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="guessLength">Predicted length</label>
+            <input id="guessLength" name="guessLength" placeholder="e.g. 20 inches" />
+          </div>
+          <div>
+            <label for="guessHair">Hair color guess</label>
+            <select id="guessHair" name="guessHair">
+              <option value="">Select one</option>
+              <option>Blonde</option>
+              <option>Brown</option>
+              <option>Black</option>
+              <option>Red</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message">Extra note</label>
+          <textarea id="message" name="message" placeholder="Any guesses, advice, or wishes?"></textarea>
+        </div>
+
+        <button id="submit-btn" type="submit">Submit Prediction</button>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer class="reveal delay-4">
+      <p>
+        Questions or love notes: <a href="mailto:hello@example.com">hello@example.com</a> |
+        (555) 123-4567
+      </p>
+      <p>Thank you for celebrating this new chapter with us.</p>
+    </footer>
+  </main>
+
+  <script>
+    const DUE_DATE = new Date("2026-10-15T00:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diffMs = DUE_DATE - now;
+
+      if (diffMs <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById("days").textContent = String(days);
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Google Sheets integration:
+    // 1) Create a Google Apps Script attached to a Sheet and deploy as a Web App.
+    // 2) Replace the URL below with your deployed Web App URL.
+    // 3) In Apps Script, create doPost(e) to parse JSON and append to the sheet.
+    const SHEETS_WEB_APP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    const form = document.getElementById("prediction-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    const revealElements = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      revealElements.forEach((element) => revealObserver.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("visible"));
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!SHEETS_WEB_APP_URL || SHEETS_WEB_APP_URL.includes("PASTE_YOUR")) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Set your Google Apps Script URL in the HTML before submitting.";
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        submittedAt: new Date().toISOString(),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        guessDate: formData.get("guessDate"),
+        guessWeight: formData.get("guessWeight"),
+        guessLength: formData.get("guessLength"),
+        guessHair: formData.get("guessHair"),
+        message: formData.get("message")
+      };
+
+      submitBtn.disabled = true;
+      statusEl.className = "status";
+      statusEl.textContent = "Submitting prediction...";
+
+      try {
+        const response = await fetch(SHEETS_WEB_APP_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        form.reset();
+        statusEl.className = "status ok";
+        statusEl.textContent = "Thanks. Your prediction was saved.";
+      } catch (error) {
+        statusEl.className = "status err";
+        statusEl.textContent = "Could not save your prediction. Try again in a moment.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

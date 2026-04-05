@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./config.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Mobile-first prototype</p>
+          <h1>Personal Dashboard</h1>
+        </div>
+        <p class="today" id="today"></p>
+      </header>
+
+      <section class="card auth-card" id="authCard" hidden>
+        <h2>Supabase Sync</h2>
+        <p class="muted" id="authStatus">Not connected.</p>
+        <form id="loginForm" class="inline-form">
+          <input type="email" id="emailInput" placeholder="you@example.com" required />
+          <button type="submit">Email Login Link</button>
+        </form>
+        <button id="logoutButton" class="secondary" hidden>Sign out</button>
+      </section>
+
+      <main class="tab-content">
+        <section id="knowledge" class="domain-panel active" aria-label="Knowledge">
+          <article class="card widget-card" draggable="true" data-widget-id="knowledge-notes">
+            <div class="card-heading">
+              <h2>Notes</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <form id="noteForm" class="stack-form">
+              <textarea id="noteInput" rows="3" placeholder="Capture an idea, insight, or lesson"></textarea>
+              <button type="submit">Add Note</button>
+            </form>
+            <ul id="notesList" class="item-list"></ul>
+          </article>
+
+          <article class="card widget-card" draggable="true" data-widget-id="knowledge-goals">
+            <div class="card-heading">
+              <h2>Learning Goals</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <form id="goalForm" class="inline-form">
+              <input id="goalInput" placeholder="Example: Finish one chapter" />
+              <button type="submit">Add Goal</button>
+            </form>
+            <ul id="goalsList" class="item-list"></ul>
+          </article>
+
+          <article class="card widget-card" draggable="true" data-widget-id="knowledge-goal-chart">
+            <div class="card-heading">
+              <h2>Goal Progress</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <canvas id="goalsChart" class="chart-canvas" width="600" height="220"></canvas>
+          </article>
+        </section>
+
+        <section id="physical" class="domain-panel" aria-label="Physical">
+          <article class="card widget-card" draggable="true" data-widget-id="physical-habits">
+            <div class="card-heading">
+              <h2>Habits</h2>
+              <p class="muted" id="habitProgress"></p>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <form id="habitForm" class="inline-form">
+              <input id="habitInput" placeholder="Example: Drink 2L water" />
+              <button type="submit">Add Habit</button>
+            </form>
+            <ul id="habitsList" class="item-list"></ul>
+          </article>
+
+          <article class="card widget-card" draggable="true" data-widget-id="physical-workouts">
+            <div class="card-heading">
+              <h2>Workout Log</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <form id="workoutForm" class="stack-form">
+              <input id="workoutTitleInput" placeholder="Workout title" />
+              <textarea id="workoutNotesInput" rows="2" placeholder="What did you do?"></textarea>
+              <button type="submit">Log Workout</button>
+            </form>
+            <ul id="workoutsList" class="item-list"></ul>
+          </article>
+
+          <article class="card widget-card" draggable="true" data-widget-id="physical-workout-chart">
+            <div class="card-heading">
+              <h2>Last 7 Days Workouts</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <canvas id="workoutChart" class="chart-canvas" width="600" height="220"></canvas>
+          </article>
+        </section>
+
+        <section id="financial" class="domain-panel" aria-label="Financial">
+          <article class="card widget-card" draggable="true" data-widget-id="financial-budget">
+            <div class="card-heading">
+              <h2>Budget</h2>
+              <p class="muted" id="budgetSummary"></p>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <form id="budgetForm" class="inline-form">
+              <input id="budgetInput" type="number" min="0" step="0.01" placeholder="Monthly budget" />
+              <button type="submit">Save</button>
+            </form>
+          </article>
+
+          <article class="card widget-card" draggable="true" data-widget-id="financial-expenses">
+            <div class="card-heading">
+              <h2>Expenses</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <form id="expenseForm" class="stack-form">
+              <input id="expenseTitleInput" placeholder="What was this expense?" />
+              <div class="split-row">
+                <input id="expenseAmountInput" type="number" min="0" step="0.01" placeholder="Amount" />
+                <input id="expenseDateInput" type="date" />
+              </div>
+              <button type="submit">Add Expense</button>
+            </form>
+            <ul id="expensesList" class="item-list"></ul>
+          </article>
+
+          <article class="card widget-card" draggable="true" data-widget-id="financial-expense-chart">
+            <div class="card-heading">
+              <h2>Last 7 Days Spending</h2>
+              <span class="drag-handle" title="Drag to reorder">Reorder</span>
+            </div>
+            <canvas id="spendChart" class="chart-canvas" width="600" height="220"></canvas>
+          </article>
+        </section>
+      </main>
+
+      <nav class="domain-nav" aria-label="Dashboard sections">
+        <button class="nav-link active" data-domain="knowledge">Knowledge</button>
+        <button class="nav-link" data-domain="physical">Physical</button>
+        <button class="nav-link" data-domain="financial">Financial</button>
+      </nav>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
