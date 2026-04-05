@@ -17,8 +17,8 @@ jobs:
           switches: -az --delete --exclude='.git*' --exclude='.github/' --exclude='.DS_Store'
           path: ./
           remote_path: /public_html/roryfyi/
-          remote_host: ${{ secrets.BLUEHOST_SSH_HOST }}
-          remote_user: ${{ secrets.BLUEHOST_SSH_USER }}
+          remote_host: box5379.bluehost.com
+          remote_user: codex
           remote_key: ${{ secrets.BLUEHOST_SSH_KEY }}
           remote_port: 22
           rsh: ssh -o IdentitiesOnly=yes
