@@ -21,3 +21,4 @@ jobs:
           remote_user: ${{ secrets.BLUEHOST_SSH_USER }}
           remote_key: ${{ secrets.BLUEHOST_SSH_KEY }}
           remote_port: 22
+          rsh: ssh -o IdentitiesOnly=yes
