@@ -16,7 +16,7 @@ jobs:
         with:
           SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
           REMOTE_HOST: box5379.bluehost.com
-          REMOTE_USER: codex
+          REMOTE_USER: redkingt
           REMOTE_PORT: 22
           SOURCE: "./"
           TARGET: "/public_html/roryfyi/"
