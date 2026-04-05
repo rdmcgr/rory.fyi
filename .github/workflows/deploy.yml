@@ -11,17 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via SSH (rsync)
+        uses: burnett01/rsync-deployments@6.0.0
         with:
-          server: ${{ secrets.BLUEHOST_SFTP_HOST }}
-          username: ${{ secrets.BLUEHOST_SFTP_USER }}
-          password: ${{ secrets.BLUEHOST_SFTP_PASS }}
-          port: ${{ secrets.BLUEHOST_SFTP_PORT }}
-          protocol: sftp
-          server-dir: /public_html/roryfyi/
-          dangerous-clean-slate: true
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/.DS_Store
+          switches: -az --delete --exclude='.git*' --exclude='.github/' --exclude='.DS_Store'
+          path: ./
+          remote_path: /public_html/roryfyi/
+          remote_host: ${{ secrets.BLUEHOST_SSH_HOST }}
+          remote_user: ${{ secrets.BLUEHOST_SSH_USER }}
+          remote_key: ${{ secrets.BLUEHOST_SSH_KEY }}
+          remote_port: ${{ secrets.BLUEHOST_SSH_PORT }}
