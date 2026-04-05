@@ -19,6 +19,6 @@ jobs:
           REMOTE_USER: redkingt
           REMOTE_PORT: 22
           SOURCE: "./"
-          TARGET: "/public_html/roryfyi/"
+          TARGET: "public_html/roryfyi/"
           EXCLUDE: "/.git/, /.github/, **/.DS_Store"
           ARGS: "-rlgoDzvc -i --delete"
