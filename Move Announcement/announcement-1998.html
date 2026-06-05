@@ -569,7 +569,7 @@
       </div>
 
       <marquee behavior="scroll" direction="left" scrollamount="6">
-        BREAKING NEWS: We are moving from Portland back to New England in October 2026.
+        BREAKING NEWS: We are moving from Portland back to New England in June 2026.
       </marquee>
 
       <div class="content">
@@ -579,7 +579,7 @@
               <h2 class="section-title">Main Update</h2>
               <div class="box">
                 <p>
-                  After six meaningful years in Portland, Oregon, we are heading east. We moved here for Rory's role at
+                  After seven amazing years in Portland, Oregon, we are heading east. We moved here for Rory's role at
                   Nike, and before that we called Boston home. We are excited for our next chapter near family, old
                   friends, and familiar places.
                 </p>
@@ -594,7 +594,7 @@
                   </tr>
                   <tr>
                     <td class="label">Move Date</td>
-                    <td>October 2026</td>
+                    <td>June 2026</td>
                   </tr>
                   <tr class="spacer">
                     <td colspan="2">&nbsp;</td>
@@ -608,12 +608,12 @@
 
               <h2 class="section-title">Our Journey</h2>
               <div class="tabs">
-                <button class="tab-btn active" data-panel="route">Route</button>
+                <button class="tab-btn active" data-panel="travels">Western Travels</button>
+                <button class="tab-btn" data-panel="route">Route</button>
                 <button class="tab-btn" data-panel="memories">Memories</button>
-                <button class="tab-btn" data-panel="travels">Western Travels</button>
               </div>
 
-              <div class="panel" id="route-panel">
+              <div class="panel" id="route-panel" hidden>
                 <svg viewBox="0 0 760 340" aria-label="Journey from Boston to Portland and back to New England" style="width: 100%; border: 1px solid #666666; background: #f8fbff">
                   <rect x="0" y="0" width="760" height="340" fill="#f8fbff"></rect>
                   <path
@@ -650,16 +650,19 @@
 
               <div class="panel" id="memories-panel" hidden>
                 <ul>
-                  <li>Boston: our first chapter together.</li>
-                  <li>Portland: six years of growth, friends, and adventures.</li>
-                  <li>New England: next home base.</li>
+                  <li><b>Boston</b>: Our first chapter together.</li>
+                  <li>
+                    <b>Portland</b>: Seven years of growth and adventures. An engagement. Planned a wedding from
+                    3,000 miles away. And sneakers. We acquired lots of sneakers.
+                  </li>
+                  <li><b>New England</b>: Our next home base.</li>
                 </ul>
                 <div class="under-construction">
                   <span class="under-construction-banner">Under Construction</span>
                 </div>
               </div>
 
-              <div class="panel" id="travels-panel" hidden>
+              <div class="panel" id="travels-panel">
                 <iframe
                   src="https://www.google.com/maps/d/embed?mid=1Oyzdo98mdvefaxb2RG-TV2-4D8Xc-l8&amp;ehbc=2E312F"
                   width="100%"
@@ -690,10 +693,10 @@
 
               <h2 class="section-title">Address Reveal</h2>
               <div class="box">
-                <p>Click to reveal our placeholder address:</p>
+                <p>Click to reveal our new address:</p>
                 <button class="address-btn" id="reveal-address">REVEAL ADDRESS</button>
                 <div class="address-status" id="address-status">MODEM IDLE</div>
-                <div class="address" id="address">[New Address Placeholder, City, State ZIP]</div>
+                <div class="address" id="address">104 Washington St, #516<br />Dover, NH 03820</div>
               </div>
             </td>
 
@@ -798,7 +801,7 @@
       const revealButton = document.getElementById('reveal-address');
       const address = document.getElementById('address');
       const addressStatus = document.getElementById('address-status');
-      const finalAddress = '[New Address Placeholder, City, State ZIP]';
+      const finalAddress = '104 Washington St, #516\nDover, NH 03820';
       const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!?';
       let revealTimeouts = [];
       let scrambleInterval = null;
@@ -841,7 +844,7 @@
         address.style.display = 'block';
         addressStatus.style.display = 'block';
         addressStatus.textContent = 'DIALING MODEM...';
-        address.textContent = '######## ########### ######## #######';
+        address.innerHTML = '######## ########### ######## #######';
 
         revealTimeouts.push(
           window.setTimeout(() => {
@@ -860,20 +863,20 @@
         scrambleInterval = window.setInterval(() => {
           frame += 1;
           const revealCount = Math.floor((frame / totalFrames) * finalAddress.length);
-          address.textContent = finalAddress
+          address.innerHTML = finalAddress
             .split('')
             .map((char, index) => {
-              if (char === ' ') {
+              if (char === ' ' || char === '\n') {
                 return ' ';
               }
               return index < revealCount ? char : randomChar();
             })
-            .join('');
+            .join('').replace(/\n/g, '<br />');
 
           if (frame >= totalFrames) {
             window.clearInterval(scrambleInterval);
             scrambleInterval = null;
-            address.textContent = finalAddress;
+            address.innerHTML = finalAddress.replace(/\n/g, '<br />');
             addressStatus.textContent = 'ADDRESS DECRYPTED. CONNECTION STABLE.';
             revealButton.disabled = false;
             revealButton.textContent = 'HIDE ADDRESS';
